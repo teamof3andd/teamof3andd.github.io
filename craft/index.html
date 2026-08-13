@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craft Block Tool — Plan your builds block by block</title>
+<meta name="description" content="Planner and blueprint maker for Minecraft builders: design in 2D layer by layer, preview in 3D, and get an exact block count before you build.">
+<style>
+  :root { --green: #3f9a46; --green-light: #7ed957; --ink: #16240f; --grey: #5d6b57; --bg: #f6faf4; --card: #fff; }
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  body { font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "Segoe UI", Roboto, sans-serif; color: var(--ink); background: var(--bg); line-height: 1.55; }
+  a { color: var(--green); text-decoration: none; }
+  .hero { background: linear-gradient(160deg, var(--green) 0%, var(--green-light) 100%); color: #fff; padding: 72px 20px 88px; text-align: center; }
+  .hero .emoji { font-size: 56px; line-height: 1; }
+  .hero h1 { font-size: clamp(28px, 6vw, 44px); font-weight: 800; letter-spacing: -.5px; margin-top: 14px; }
+  .hero p.tag { font-size: clamp(16px, 3vw, 20px); margin: 14px auto 0; max-width: 580px; opacity: .95; }
+  .store-btn { display: inline-block; margin-top: 28px; background: #fff; color: var(--green); font-weight: 700; font-size: 17px; padding: 14px 30px; border-radius: 14px; box-shadow: 0 8px 24px rgba(0,0,0,.18); transition: transform .15s ease; }
+  .store-btn:hover { transform: translateY(-2px); }
+  .hero .note { margin-top: 14px; font-size: 13px; opacity: .85; }
+  .wrap { max-width: 980px; margin: 0 auto; padding: 0 20px; }
+  section { padding: 56px 0; }
+  h2 { font-size: clamp(24px, 4vw, 32px); font-weight: 800; text-align: center; letter-spacing: -.3px; }
+  .sub { text-align: center; color: var(--grey); margin: 10px auto 0; max-width: 620px; }
+  .grid { margin-top: 36px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(230px, 1fr)); }
+  .card { background: var(--card); border-radius: 16px; padding: 22px 20px; box-shadow: 0 4px 16px rgba(22,36,15,.06); }
+  .card .ic { width: 44px; height: 44px; border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 22px; background: rgba(63,154,70,.12); margin-bottom: 12px; }
+  .card h3 { font-size: 16.5px; font-weight: 700; }
+  .card p { font-size: 14px; color: var(--grey); margin-top: 6px; }
+  .steps { margin-top: 36px; display: grid; gap: 16px; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); }
+  .step { text-align: center; padding: 10px 16px; }
+  .step .n { width: 44px; height: 44px; border-radius: 50%; margin: 0 auto 12px; background: linear-gradient(160deg, var(--green), var(--green-light)); color: #fff; font-weight: 800; font-size: 19px; display: flex; align-items: center; justify-content: center; }
+  .step h3 { font-size: 17px; }
+  .step p { font-size: 14px; color: var(--grey); margin-top: 6px; }
+  .support { text-align: center; }
+  .support .mail { display: inline-block; margin-top: 18px; font-size: 17px; font-weight: 700; background: var(--card); padding: 14px 26px; border-radius: 14px; box-shadow: 0 4px 16px rgba(22,36,15,.06); }
+  .apps { text-align: center; padding-bottom: 8px; }
+  .apps a.chip { display: inline-block; margin: 8px 6px 0; background: var(--card); padding: 10px 18px; border-radius: 999px; font-weight: 600; font-size: 14px; box-shadow: 0 4px 14px rgba(22,36,15,.06); }
+  footer { border-top: 1px solid rgba(22,36,15,.08); padding: 26px 20px 40px; text-align: center; color: var(--grey); font-size: 13.5px; }
+  footer .links { margin-bottom: 8px; }
+  footer .links a { margin: 0 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<div class="hero">
+  <div class="emoji">🧱</div>
+  <h1>Craft Block Tool</h1>
+  <p class="tag">Plan your dream builds block by block — sketch every floor in 2D, preview it in cinematic 3D, and know exactly how many blocks you need before you place one.</p>
+  <a class="store-btn" href="https://apps.apple.com/app/id6757445649">Download on the App&nbsp;Store</a>
+  <div class="note">A planner for Minecraft builders · works offline, no account needed</div>
+</div>
+
+<section>
+  <div class="wrap">
+    <h2>From idea to blueprint</h2>
+    <p class="sub">Houses, castles, pixel art — design first, gather materials once, build without guessing.</p>
+    <div class="grid">
+      <div class="card"><div class="ic">📐</div><h3>Plan in 2D, layer by layer</h3><p>Foundations, walls, roofs, interiors — full control over every block on a clean grid.</p></div>
+      <div class="card"><div class="ic">🌇</div><h3>See it in 3D</h3><p>Rotate 360°, switch day and night, warm lighting and soft shadows — your house before you build it.</p></div>
+      <div class="card"><div class="ic">🔢</div><h3>Count every block</h3><p>An exact material list for the whole build — gather the right blocks the first time.</p></div>
+      <div class="card"><div class="ic">🏰</div><h3>Ready-made ideas</h3><p>Start from a cozy cottage, modern villa, medieval castle or cherry blossom house.</p></div>
+      <div class="card"><div class="ic">✈️</div><h3>Works offline</h3><p>Plan on the go — no account, no internet needed.</p></div>
+      <div class="card"><div class="ic">🎨</div><h3>Made for builders</h3><p>For everyone who loves designing houses, castles and pixel art as much as building them.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="wrap">
+    <h2>How it works</h2>
+    <div class="steps">
+      <div class="step"><div class="n">1</div><h3>Sketch</h3><p>Draw your build layer by layer on the 2D grid.</p></div>
+      <div class="step"><div class="n">2</div><h3>Preview</h3><p>Walk around it in 3D and polish the design.</p></div>
+      <div class="step"><div class="n">3</div><h3>Build</h3><p>Take the block list into your world and bring it to life.</p></div>
+    </div>
+  </div>
+</section>
+
+<section style="padding-top: 0;">
+  <div class="wrap support">
+    <h2>Need help?</h2>
+    <p class="sub">Questions or build ideas you'd love to see — write to us.</p>
+    <a class="mail" href="mailto:teamof3andd@gmail.com">teamof3andd@gmail.com</a>
+  </div>
+</section>
+
+<section class="apps" style="padding-top: 0;">
+  <div class="wrap">
+    <p class="sub">More apps by 3andD</p>
+    <a class="chip" href="../">🤖 Ultimate Cleaner</a>
+    <a class="chip" href="../dmv/">🚦 DMV Permit Practice</a>
+  </div>
+</section>
+
+<footer>
+  <div class="links">
+    <a href="https://sites.google.com/view/blockbuildplanner/privacy-policy">Privacy Policy</a>
+    <a href="https://sites.google.com/view/blockbuildplanner/terms-of-use">Terms of Use</a>
+    <a href="mailto:teamof3andd@gmail.com">Contact</a>
+  </div>
+  © 2026 3andD Team. All rights reserved. Craft Block Tool is not an official Minecraft product and is not associated with Mojang or Microsoft.
+</footer>
+
+</body>
+</html>
