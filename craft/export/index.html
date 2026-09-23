@@ -4,122 +4,236 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Put your Craft Block build into Minecraft — step by step</title>
-<meta name="description" content="How to load a build exported from Craft Block into your own Minecraft world: Bedrock (phone, console, Windows) and Java (PC, Mac). No mods.">
+<meta name="description" content="How to load a build exported from Craft Block into your own Minecraft world: Bedrock (phone, tablet, console, Windows) and Java (PC, Mac). One action per step, no mods.">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="Put your Craft Block build into Minecraft"><meta property="og:description" content="Bedrock and Java, no mods: export from the app, one command in the game."><meta property="og:image" content="https://teamof3andd.com/assets/craft_icon.png">
+<meta property="og:title" content="Put your Craft Block build into Minecraft"><meta property="og:description" content="Bedrock and Java, no mods: export from the app, one command in the game."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
-:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0}
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
 html{scroll-behavior:smooth}
 body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
 a{color:var(--accent);text-decoration:none}
-.wrap{max-width:860px;margin:0 auto;padding:0 24px}
-nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.85);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
 nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
-nav .brand{font-weight:800;color:var(--ink);letter-spacing:-.2px}
-nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:20px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
 .hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
-.hero .wrap{padding:56px 24px}
-.hero h1{font-size:clamp(30px,4.6vw,46px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
-.hero p{margin-top:14px;font-size:17px;max-width:600px;opacity:.95}
-.hero .pick{display:flex;gap:12px;flex-wrap:wrap;margin-top:26px}
-.hero .pick a{background:rgba(255,255,255,.16);border:1px solid rgba(255,255,255,.4);color:#fff;font-weight:700;padding:12px 18px;border-radius:12px}
-section{padding:56px 0;border-bottom:1px solid var(--line)}
-section h2{font-size:clamp(24px,3.2vw,32px);font-weight:800;letter-spacing:-.5px}
-section .lead{color:var(--grey);margin-top:10px;font-size:16px;max-width:640px}
-.steps{display:grid;gap:14px;margin-top:26px}
-.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 20px;display:grid;grid-template-columns:44px 1fr;gap:14px;align-items:start}
-.step .n{width:36px;height:36px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px;margin-top:2px}
-.step h3{font-size:17px}
-.step p{color:var(--grey);margin-top:4px;font-size:15px}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
 code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
-code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px}
-.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:14px;overflow-x:auto;white-space:nowrap}
-.tip{background:var(--card);border-left:4px solid var(--accent2);border-radius:12px;padding:14px 18px;margin-top:22px;color:var(--ink);font-size:15px}
-.tip b{color:var(--accent)}
-.compass{background:var(--dark);color:#fff;border-radius:22px;padding:26px 30px;margin-top:26px}
-.compass h3{font-size:19px}.compass p{opacity:.88;margin-top:8px}
-.qa{margin-top:26px;display:grid;gap:10px}
-.qa details{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
-.qa summary{font-weight:700;cursor:pointer;list-style:none}
-.qa summary::-webkit-details-marker{display:none}
-.qa p{color:var(--grey);margin-top:8px;font-size:15px}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
 footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
-@media (max-width:600px){.step{grid-template-columns:36px 1fr}}
 </style>
 </head>
 <body>
 <nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">Privacy</a></div></div></nav>
 
 <header class="hero"><div class="wrap">
-<h1>Put your build into your Minecraft world</h1>
-<p>Export from Craft Block, open it in the game, type one command. No mods, no third-party tools. Works with Bedrock (phone, tablet, console, Windows) and Java (PC and Mac).</p>
-<div class="pick"><a href="#bedrock">Bedrock: phone, console, Windows</a><a href="#java">Java: PC and Mac</a><a href="#spot">Choose the exact spot</a></div>
+<h1>Your build, in your own world</h1>
+<p>Six steps. One thing to do in each. At the end you type one command and the build appears in front of you. No mods.</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">I play on a phone, tablet, console or Windows<small>That is Minecraft <b>Bedrock</b> — the one from the app store.</small></button>
+<button id="pickJ" onclick="pick('java')">I play on a PC or Mac from the Launcher<small>That is Minecraft <b>Java</b>.</small></button>
+</div>
 </div></header>
 
-<section id="export"><div class="wrap">
-<h2>1. Export from the app</h2>
-<p class="lead">On the home screen, press and hold a build. Choose <b>Export to Minecraft</b>, then the edition you play. The app shows the footprint of the build, what it will replace, the command to type — and hands you a file.</p>
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock: phone, tablet, console, Windows</h2>
+<p class="lead">Every step is one screen. The line under each says what you should see when it worked.</p>
 <div class="steps">
-<div class="step"><div class="n">B</div><div><h3>Bedrock gives you a <code>.mcpack</code></h3><p>A behavior pack. Minecraft imports it the moment you open the file.</p></div></div>
-<div class="step"><div class="n">J</div><div><h3>Java gives you a <code>.zip</code> datapack</h3><p>It goes into your world's folder. Nothing to install.</p></div></div>
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Export from Craft Block</h3>
+<p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Bedrock</b> → <b>Save .mcpack</b>.</p>
+<p>On Android, Minecraft opens by itself. On iPhone or iPad a share sheet opens: pick <b>Minecraft</b>. If it is not there, choose <b>Save to Files</b>, then tap the file in the Files app.</p>
+<p class="see">You should see: Minecraft starts and shows <b>Import successful</b> at the top.</p>
+<div class="oops"><b>Nothing happened, or the file opened somewhere else?</b> Send the file to yourself (Telegram, Drive, mail), open it on the device, press and hold it → <i>Open with</i> → Minecraft.</div>
+</div></div>
+<figure><img src="img/b1.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The export dialog in Craft Block, with the command you will type in step 6.</figcaption></figure>
 </div>
-<div class="tip"><b>Premium.</b> Export is part of Craft Block Premium. Everything else on this page is free: the game already knows how to do it.</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Go to your worlds</h3>
+<p>In Minecraft press <b>Play</b>. You are on the <b>Worlds</b> tab.</p>
+<p>New world: <b>Create New</b> → <b>Create New World</b>. Existing world: tap the <b>pencil</b> next to its name — not the name itself.</p>
+<p class="see">You should see: the world settings, with a list of sections on the left (General, Game, Resource Packs, Behavior Packs…).</p>
+</div></div>
+<figure><img src="img/b2.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The pencil opens the settings of an existing world.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Turn on cheats</h3>
+<p>Left list → <b>Game</b>. Set <b>Default Game Mode</b> to <b>Creative</b>. Scroll down to the <b>Cheats</b> heading and switch <b>Activate Cheats</b> on. The game warns that achievements will be off in this world — that is fine, say yes.</p>
+<p class="see">You should see: the Activate Cheats switch green.</p>
+</div></div>
+<figure><img src="img/b3.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Game → Cheats → Activate Cheats.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Switch the pack on for this world</h3>
+<p>Left list → <b>Behavior Packs</b> → open <b>My Packs</b> → tap the pack with your build's name → <b>Activate</b>.</p>
+<p class="see">You should see: the pack moved up into <b>Active</b>.</p>
+<div class="oops"><b>No Activate button?</b> You are inside a running world — that screen only <i>shows</i> packs. Leave the world (pause → Save &amp; Quit) and come back through the pencil, as in step 2.</div>
+</div></div>
+<figure><img src="img/b4.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Behavior Packs → My Packs → Activate.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Enter the world and pick the spot</h3>
+<p>Press <b>Create</b> (new world) or <b>Play</b> (existing). Walk to flat, open ground. Turn so the sun is <b>in front of you</b> when it rises — that is east. The build will fill the ground in front of you and to your right.</p>
+<p class="see">You should see: a flat patch ahead, at least as big as the size the app showed.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Type the command</h3>
+<p>Tap the <b>speech bubble</b> at the top of the screen to open chat. Type the command from the app. It is <b>two words with a space</b>: the word <code>function</code>, then your build's name. For a build called My House:</p>
+<span class="cmd">/function craft_my_house</span>
+<p>Press send. The build appears at once.</p>
+<p class="see">You should see: your build, exactly as in the app.</p>
+<div class="oops"><b>“Incorrect permission level for command: function”</b> Cheats are on but your player is not an operator yet. Pause → <b>Social</b> (top right) → tap your own name → <b>Operator</b>. Type the command again.</div>
+<div class="oops"><b>“Unknown command: craft_my_house”</b> The word <code>function</code> went missing — easy to lose on a touch keyboard. Two words: <code>/function craft_my_house</code>.</div>
+<div class="oops"><b>“Unknown function”</b> Step 4 is not done for this world, or you are in a different world. Spaces in the build's name become underscores: <i>My House</i> → <code>craft_my_house</code>.</div>
+</div></div>
+<figure><img src="img/b6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chat, the command, and the build standing in the world.</figcaption></figure>
+</div>
+
+</div>
 </div></section>
 
-<section id="bedrock"><div class="wrap">
-<h2>2a. Bedrock — phone, tablet, console, Windows</h2>
-<p class="lead">Bedrock is the edition on iPhone, iPad, Android, Xbox, PlayStation, Switch and the Microsoft Store on Windows.</p>
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java: PC and Mac</h2>
+<p class="lead">Java reads the build from a small <code>.zip</code> file you drop into your world's folder. Nothing to install.</p>
 <div class="steps">
-<div class="step"><div class="n">1</div><div><h3>Open the .mcpack</h3><p>iPhone / iPad: in the Files app tap the file, or tap Share and pick Minecraft. Android: tap the file in your file manager. Windows: double-click it. Minecraft starts and says <i>Import successful</i>.</p></div></div>
-<div class="step"><div class="n">2</div><div><h3>Turn on cheats in the world</h3><p>Open the world's settings (the pencil next to it). Under <b>Game</b> switch on <b>Activate Cheats</b>. This turns off achievements for that world — use a copy if you care.</p></div></div>
-<div class="step"><div class="n">3</div><div><h3>Add the pack to the world</h3><p>Still in the world's settings: <b>Behavior Packs</b> → <b>Available</b> → find the pack named after your build → <b>Activate</b>.</p></div></div>
-<div class="step"><div class="n">4</div><div><h3>Stand where the build should go and type the command</h3><p>Open chat (the speech bubble, or <code>T</code> on a keyboard) and type the command the app showed you. It looks like this — the last part is your build's name:</p><span class="cmd">/function craft_my_house</span></div></div>
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Export from Craft Block</h3>
+<p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Java</b> → <b>Save .zip</b>. Send the file to your computer any way you like: AirDrop, mail, Telegram, a cable. <b>Do not unzip it.</b></p>
+<p class="see">You should see: a file called <code>my_house_datapack.zip</code> on the computer.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Open your world's folder</h3>
+<p><b>Mac:</b> in Finder press <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, paste <code>~/Library/Application Support/minecraft/saves</code>, Enter.<br><b>Windows:</b> press <span class="kbd">Win</span><span class="kbd">R</span>, type <code>%appdata%\.minecraft\saves</code>, Enter.</p>
+<p>Open the folder with your world's name, then the <b>datapacks</b> folder inside it.</p>
+<p class="see">You should see: a folder named datapacks (it may be empty — that is normal).</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Drop the .zip in</h3>
+<p>Move the file into <b>datapacks</b>. Still zipped.</p>
+<p class="see">You should see: the .zip sitting inside datapacks.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Switch the pack on</h3>
+<p>Open the world in the game. Press <span class="kbd">T</span> for chat and type these two lines, one after the other. Use your file's name in the first one:</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">You should see: “Enabled data pack …” after the first line, and a short pause after the second.</p>
+<div class="oops"><b>Says the pack is “incompatible”?</b> Enable it anyway, it loads. Exports from Craft Block 2.6.0 and later do not show this.</div>
+<div class="oops"><b>Commands do not work?</b> Cheats are off for this world. Pause → <b>Open to LAN</b> → <b>Allow Cheats: ON</b> → Start LAN World. Creative worlds have cheats on already.</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Pick the spot</h3>
+<p>Walk to flat, open ground. Press <span class="kbd">F3</span> (Mac: <span class="kbd">fn</span><span class="kbd">F3</span>) and turn until the line <i>Facing</i> says <b>east</b>. The build will fill the ground in front of you and to your right.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Type the command</h3>
+<p>Press <span class="kbd">T</span> and type the command from the app. In Java it has a <b>colon</b>. For a build called My House:</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">You should see: your build, exactly as in the app.</p>
+<div class="oops"><b>“Unknown function”</b> Step 4 was skipped, or the name is off: Java uses a colon and spaces become underscores — <i>My House</i> → <code>craft:my_house</code>.</div>
+</div></div>
+<figure><img src="img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The command and the build in a Java world.</figcaption></figure>
+</div>
+
 </div>
 </div></section>
 
-<section id="java"><div class="wrap">
-<h2>2b. Java — PC and Mac</h2>
-<p class="lead">Java is the edition from the Minecraft Launcher on Windows, Mac and Linux.</p>
-<div class="steps">
-<div class="step"><div class="n">1</div><div><h3>Get the .zip onto the computer</h3><p>AirDrop, email, a cable — any way. Do not unzip it.</p></div></div>
-<div class="step"><div class="n">2</div><div><h3>Put it in your world's datapacks folder</h3><p>Every world has one. On <b>Mac</b>: in Finder press <code>⌘⇧G</code> and paste <code>~/Library/Application Support/minecraft/saves</code>. On <b>Windows</b>: press <code>Win+R</code> and open <code>%appdata%\.minecraft\saves</code>. Open the folder with your world's name, then <code>datapacks</code> (create it if it is not there), and drop the zip in.</p><p>Easier, if the world is new: on the <b>Create New World</b> screen go to <b>More → Data Packs → Open Pack Folder</b>, drop the zip there, move it to <b>Selected</b>. Then skip step 3.</p></div></div>
-<div class="step"><div class="n">3</div><div><h3>Switch the pack on</h3><p>An existing world does not enable a new pack by itself. In the game, open chat with <code>T</code> and type these two lines, one after the other. The file name is the one you dropped in:</p><span class="cmd">/datapack enable "file/my_house_datapack.zip"</span><span class="cmd">/reload</span></div></div>
-<div class="step"><div class="n">4</div><div><h3>Stand where the build should go and type the command</h3><p>The app showed it to you. For Java it has a colon:</p><span class="cmd">/function craft:my_house</span><p>Cheats must be on for the world (Creative worlds have them on already).</p></div></div>
-</div>
-</div></section>
-
+<!-- ============================ COMMON ============================ -->
 <section id="spot"><div class="wrap">
-<h2>3. Where the build appears — and how to choose the spot yourself</h2>
+<h2>Where exactly does it appear?</h2>
 <div class="compass">
-<h3>It starts at your feet and grows east and south.</h3>
-<p>Face east — where the sun rises — and the build fills the ground in front of you and to your right. The app tells you how wide, deep and tall it is. Pick flat, open ground: the build is placed as-is, so over a hill part of it ends up inside the hill, and over a lake the water gets in.</p>
-<p style="margin-top:12px">In Java, <code>F3</code> (on a Mac <code>fn</code>+<code>F3</code>) shows <i>Facing</i>. In Bedrock a compass or the map shows north; east is to its right.</p>
+<h3>At your feet, growing east and south.</h3>
+<p>Face east (the sun rises there) and the build fills the ground in front of you and to your right. The app tells you how wide, deep and tall it is. The build is placed as-is: over a hill, part of it ends up inside the hill; over a lake, the water gets in. Flat ground first, command second.</p>
 </div>
-<p class="lead" style="margin-top:26px">Want a preview and exact control? Use the game's own <b>structure block</b>. It draws the build's outline before placing it, and you can nudge and rotate it.</p>
-<div class="steps">
-<div class="step"><div class="n">1</div><div><h3>Get a structure block</h3><span class="cmd">/give @s structure_block</span></div></div>
-<div class="step"><div class="n">2</div><div><h3>Place it and open it</h3><p>Switch the mode to <b>Load</b>. In the name field type your build's name: Java <code>craft:my_house</code>, Bedrock <code>craft:my_house</code> too.</p></div></div>
-<div class="step"><div class="n">3</div><div><h3>Preview, adjust, load</h3><p>Turn on the bounding box (Java: <i>Show Bounding Box</i>; Bedrock: it shows by default). Change the offsets and rotation until the outline sits where you want it, then press <b>Load</b>.</p><p>One structure block holds up to 48 blocks per side in Java and 64 in Bedrock. Bigger builds are exported as several parts; the app names them like <code>my_house_0_0_48</code>, and each goes at the offset in its name.</p></div></div>
-</div>
+<details class="more"><summary>I want a preview and exact control (structure block)</summary>
+<p>The game's own structure block draws the build's outline before placing it, and lets you nudge and rotate it. Get one with <code>/give @s structure_block</code>, place it, open it, set the mode to <b>Load</b>, type your build's name in the name field (<code>craft:my_house</code> in both editions), turn on the bounding box, adjust the offsets until the outline sits right, then <b>Load</b>. One block holds up to 48 blocks per side in Java and 64 in Bedrock; bigger builds come as several parts and the app lists the offset of each.</p>
+</details>
 </div></section>
 
 <section id="faq"><div class="wrap">
 <h2>If something looks off</h2>
 <div class="qa">
-<details><summary>“Incorrect permission level for command: function” (Bedrock)</summary><p>Cheats are on but your player is not an operator. Pause the game, open the players list (<b>Social</b>, top right), tap your own name and set the permission to <b>Operator</b>. Then run the command again.</p></details>
-<details><summary>“Unknown command: craft_my_house” (Bedrock)</summary><p>The word <code>function</code> went missing — on a touch keyboard it is easy to lose. The command is two words with a space: <code>/function craft_my_house</code>.</p></details>
-<details><summary>No “Activate” button on the pack</summary><p>Inside a running world the settings only <i>show</i> packs. Leave the world (Save &amp; Quit), then in the Worlds list tap the <b>pencil</b> next to it — that screen lets you activate.</p></details>
-<details><summary>“Unknown function”</summary><p>Java: the pack is not switched on yet — run the two lines from step 3. Bedrock: the pack is not activated on this world, or cheats are off. Also check the name: Java uses a colon (<code>craft:my_house</code>), Bedrock an underscore (<code>craft_my_house</code>), and spaces in your build's name become underscores.</p></details>
-<details><summary>A door, torch or flower is missing</summary><p>They need solid ground under them. If the build was placed over a dip, a hole or water, the game drops them the moment they load. Place the build on flat ground, or fill the ground first.</p></details>
-<details><summary>Water is running everywhere</summary><p>Your build has a pond or a pool and was placed above the ground, so the water has nowhere to sit. Place it lower, on the ground, and the water stays in its basin.</p></details>
-<details><summary>A corner stair is straight</summary><p>The game decides a stair's corner shape from its neighbours, exactly as when you place one by hand. A corner stair with no stairs next to it is straight; in a finished roof it is a corner.</p></details>
+<details><summary>A door, torch or flower is missing</summary><p>They need solid ground under them. If the build landed over a dip, a hole or water, the game drops them the moment they load. Place it on flat ground, or fill the ground first.</p></details>
+<details><summary>Water is running everywhere</summary><p>Your build has a pond or a pool and was placed above the ground, so the water had nowhere to sit. Place it lower, on the ground, and the water stays in its basin.</p></details>
+<details><summary>A corner stair came out straight</summary><p>The game decides a stair's corner shape from its neighbours, exactly as when you place one by hand. A corner stair with no stairs next to it is straight; in a finished roof it is a corner.</p></details>
 <details><summary>My animals are not there</summary><p>Animals in Craft Block are decorations, not blocks. The game has no block for them, so they stay in the planner. The app tells you how many before you export.</p></details>
-<details><summary>The pack says “incompatible” (Java)</summary><p>Enable it anyway — it loads. Older exports carry a version stamp the newest game does not recognise; exports from Craft Block 2.6.0 and later are marked for every version.</p></details>
+<details><summary>Is export free?</summary><p>The first three exports are free. After that, export is part of Craft Block Premium. Everything on this page is done by the game itself and costs nothing.</p></details>
 </div>
 </div></section>
 
 <footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">About the app</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Not an official Minecraft product. Not approved by or associated with Mojang or Microsoft.</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
 </body>
 </html>
