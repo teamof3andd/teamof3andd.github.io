@@ -124,14 +124,18 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock: phone, tablet, console, Windows</h2>
-<p class="lead">Every step is one screen. The line under each says what you should see when it worked.</p>
+<p class="lead">Every step is one screen. The line under each says what you should see when it worked. The pictures are from an Android tablet; the screens look the same on iPhone, iPad and Windows.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Export from Craft Block</h3>
 <p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Bedrock</b> → <b>Save .mcpack</b>.</p>
-<p>On Android, Minecraft opens by itself. On iPhone or iPad a share sheet opens: pick <b>Minecraft</b>. If it is not there, choose <b>Save to Files</b>, then tap the file in the Files app.</p>
-<p class="see">You should see: Minecraft starts and shows <b>Import successful</b> at the top.</p>
+<p>Then get the file into the game — this is the one step that differs by device:</p>
+<p><b>Android phone or tablet:</b> Minecraft opens by itself and imports the pack.</p>
+<p><b>iPhone or iPad:</b> a share sheet opens. Pick <b>Minecraft</b>. If it is not in the list, choose <b>Save to Files</b>, then open the Files app and tap the file.</p>
+<p><b>Windows 10/11 (Bedrock from the Microsoft Store):</b> send the file to the PC (mail, OneDrive, a cable) and double-click it. Minecraft starts and imports it.</p>
+<p><b>Xbox, PlayStation, Switch:</b> a console cannot open files. Import the pack on a phone or PC, put the build into a world there, and bring that world to the console through a <b>Realm</b> (Play on Realms → upload the world; the console then joins it). Or simply play that world on the phone.</p>
+<p class="see">You should see: Minecraft shows <b>Import successful</b> at the top.</p>
 <div class="oops"><b>Nothing happened, or the file opened somewhere else?</b> Send the file to yourself (Telegram, Drive, mail), open it on the device, press and hold it → <i>Open with</i> → Minecraft.</div>
 </div></div>
 <figure><img src="img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>The export dialog in Craft Block, with the command you will type in step 6.</figcaption></figure>
@@ -202,7 +206,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">2</div><div>
 <h3>Open your world's folder</h3>
-<p><b>Mac:</b> in Finder press <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, paste <code>~/Library/Application Support/minecraft/saves</code>, Enter.<br><b>Windows:</b> press <span class="kbd">Win</span><span class="kbd">R</span>, type <code>%appdata%\.minecraft\saves</code>, Enter.</p>
+<p><b>Mac:</b> in Finder press <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, paste <code>~/Library/Application Support/minecraft/saves</code>, Enter.<br><b>Windows:</b> press <span class="kbd">Win</span><span class="kbd">R</span>, type <code>%appdata%\.minecraft\saves</code>, Enter.<br><b>Linux:</b> open <code>~/.minecraft/saves</code>.</p>
 <p>Open the folder with your world's name, then the <b>datapacks</b> folder inside it.</p>
 <p class="see">You should see: a folder named datapacks (it may be empty — that is normal).</p>
 </div></div>
@@ -264,6 +268,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>Water is running everywhere</summary><p>Your build has a pond or a pool and was placed above the ground, so the water had nowhere to sit. Place it lower, on the ground, and the water stays in its basin.</p></details>
 <details><summary>A corner stair came out straight</summary><p>The game decides a stair's corner shape from its neighbours, exactly as when you place one by hand. A corner stair with no stairs next to it is straight; in a finished roof it is a corner.</p></details>
 <details><summary>My animals are not there</summary><p>Animals in Craft Block are decorations, not blocks. The game has no block for them, so they stay in the planner. The app tells you how many before you export.</p></details>
+<details><summary>I play on Xbox, PlayStation or Switch</summary><p>Consoles cannot open files, so the pack cannot be imported there directly. Import it on a phone, tablet or PC (step 1 above), place the build in a world, then upload that world to a Realm and join the Realm from the console. Without a Realm, the build stays on the device you imported it on.</p></details>
 <details><summary>Is export free?</summary><p>The first three exports are free. After that, export is part of Craft Block Premium. Everything on this page is done by the game itself and costs nothing.</p></details>
 </div>
 </div></section>
