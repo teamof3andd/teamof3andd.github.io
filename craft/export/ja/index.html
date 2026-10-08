@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craft Block の建築を Minecraft に置く — 手順ガイド</title>
+<meta name="description" content="Craft Block から書き出した建築を自分の Minecraft ワールドに読み込む方法：Bedrock（スマホ、タブレット、コンソール、Windows）と Java（PC、Mac）。1ステップ1操作、MOD 不要。">
+<link rel="canonical" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
+<link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
+<link rel="alternate" hreflang="de" href="https://teamof3andd.com/craft/export/de/">
+<link rel="alternate" hreflang="es" href="https://teamof3andd.com/craft/export/es/">
+<link rel="alternate" hreflang="fr" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="it" href="https://teamof3andd.com/craft/export/it/">
+<link rel="alternate" hreflang="ja" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="ko" href="https://teamof3andd.com/craft/export/ko/">
+<link rel="alternate" hreflang="pl" href="https://teamof3andd.com/craft/export/pl/">
+<link rel="alternate" hreflang="pt" href="https://teamof3andd.com/craft/export/pt/">
+<link rel="alternate" hreflang="ru" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="tr" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="vi" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://teamof3andd.com/craft/export/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
+<link rel="icon" href="/assets/craft_icon.png">
+<meta property="og:title" content="Craft Block の建築を Minecraft に置く"><meta property="og:description" content="Bedrock も Java も MOD 不要：アプリから書き出して、ゲーム内でコマンドを1つ。"><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<style>
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
+.hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
+code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
+.langs{max-width:820px;margin:10px auto 0;padding:0 20px;font-size:13px;color:var(--grey);line-height:1.9}.langs a{color:var(--grey)}.langs b{color:var(--ink)}
+footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">プライバシー</a></div></div></nav>
+<div class="langs"><a href="/craft/export/">English</a> · <a href="/craft/export/uk/">Українська</a> · <a href="/craft/export/de/">Deutsch</a> · <a href="/craft/export/es/">Español</a> · <a href="/craft/export/fr/">Français</a> · <a href="/craft/export/it/">Italiano</a> · <b>日本語</b> · <a href="/craft/export/ko/">한국어</a> · <a href="/craft/export/pl/">Polski</a> · <a href="/craft/export/pt/">Português</a> · <a href="/craft/export/ru/">Русский</a> · <a href="/craft/export/tr/">Türkçe</a> · <a href="/craft/export/vi/">Tiếng Việt</a> · <a href="/craft/export/zh/">简体中文</a> · <a href="/craft/export/zh-hant/">繁體中文</a></div>
+
+<header class="hero"><div class="wrap">
+<h1>あなたの建築を、あなたのワールドへ</h1>
+<p>6ステップ。各ステップでやることは1つ。最後にコマンドを1つ入力すると、目の前に建築が現れます。MOD は不要です。</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">スマホ、タブレット、コンソール、Windows で遊んでいる<small>それは Minecraft <b>Bedrock</b>（アプリストア版）です。</small></button>
+<button id="pickJ" onclick="pick('java')">PC や Mac で Launcher から遊んでいる<small>それは Minecraft <b>Java</b> です。</small></button>
+</div>
+</div></header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about"><div class="wrap">
+<h2>書き出しでできること</h2>
+<p class="lead">Craft Block は画面上の建築を、ゲームが理解できるファイルに変えます。そのファイルを Minecraft で開き、コマンドを1つ入力すると、同じ建築がブロック単位の実寸でワールドに現れます。</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>ボタンの場所</h3>
+<p>ホーム画面 → 建築を長押し → <b>Minecraft に書き出す</b>。どの建築でも大丈夫です：自分のものでも、サンプルの1つでも。</p>
+</div></div>
+<figure><img src="../img/b0.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>建築を長押しするとこのメニューが開きます。</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>自分はどのエディション？</h3>
+<p>App Store、Google Play、Microsoft Store から Minecraft を入れた、または Xbox、PlayStation、Switch で遊んでいるなら <b>Bedrock</b>。PC や Mac で <i>Minecraft Launcher</i> から起動しているなら <b>Java</b>。わからないときは、タイトル画面を見てください。Bedrock は隅に <i>v1.21.x</i> のようなバージョンが出ます。Java は <i>Minecraft 1.21.x</i> と Launcher が表示されます。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>手に入るもの</h3>
+<p><b>Bedrock：</b> 末尾が <code>.mcpack</code> のファイルが1つ。開くと、建築の名前がついたパックがゲームに入ります。<b>Java：</b> 末尾が <code>_datapack.zip</code> の <code>.zip</code> が1つで、ワールドのフォルダに入れます。どちらもごく小さく、あなたのブロックだけが入っています。</p>
+<p>書き出す前にアプリがサイズを表示します：ブロック数、幅、奥行き、高さ。大きな建築は同じファイルの中で複数のパーツに分割されますが、コマンド1つで全部まとめて置かれます。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>引き継がれるもの、引き継がれないもの</h3>
+<p><b>引き継がれる：</b> 階段、ハーフブロック、ドア、松明、ガラス、水、植物を含むすべてのブロックが、あなたの設定した向きのまま。</p>
+<p><b>置き換えられる：</b> Craft Block にしかないブロックが少しあります。アプリがそれぞれと、代わりにゲームで使われるもの（たとえば蓮はピンクのチューリップになります）を一覧にします。黙って消えるものはありません。</p>
+<p><b>アプリに残る：</b> 動物などの生き物（装飾であり、ゲームにはそのブロックがありません）と、読み込んだテクスチャパック（ゲームは自分のテクスチャを使います）。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>置かれる場所</h3>
+<p>コマンドを入力したときに立っている場所です。建築は足元から始まり、東と南へ広がるので、まず東を向いてください。詳しい説明と、正確な場所を事前に確認する方法は下の <a href="#spot">正確にはどこに現れる？</a> にあります。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>何回書き出せる？</h3>
+<p>3回まで無料。その後は Craft Block Premium の機能になります。ファイル自体に期限はありません。一度手に入れれば、好きなだけ多くのワールドに建築を置けます。</p>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock：スマホ、タブレット、コンソール、Windows</h2>
+<p class="lead">各ステップは1画面ずつ。その下の行に、うまくいったときに見えるはずのものを書いています。画像は Android タブレットと iPhone のもので、Windows でも同じ見た目です。</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Craft Block から書き出す</h3>
+<p>ホーム画面で建築を長押し → <b>Minecraft に書き出す</b> → <b>Bedrock</b> → <b>.mcpack を保存</b>。</p>
+<p>次にファイルをゲームに渡します。ここだけ端末によって手順が違います：</p>
+<p><b>Android のスマホ・タブレット：</b> Minecraft が自動で開き、パックを読み込みます。</p>
+<p><b>iPhone・iPad：</b> 共有シートが開きます。<b>Minecraft</b> を選びます。一覧にない場合は <b>"ファイル"に保存</b> を選び、ファイルアプリを開いてそのファイルをタップします。</p>
+<p><b>Windows 10/11（Microsoft Store 版 Bedrock）：</b> ファイルを PC に送り（メール、OneDrive、ケーブル）、ダブルクリックします。Minecraft が起動して読み込みます。</p>
+<p><b>Xbox、PlayStation、Switch：</b> コンソールはファイルを開けません。スマホか PC でパックを読み込み、そこでワールドに建築を置き、そのワールドを <b>Realm</b> でコンソールに持っていきます（Realms でプレイ → ワールドをアップロード、コンソールから参加）。または、そのワールドをスマホで遊ぶだけでも大丈夫です。</p>
+<p class="see">見えるはずのもの：Minecraft の上部に <b>インポートに成功しました</b> と表示されます。</p>
+<div class="oops"><b>何も起きない、またはファイルが別の場所で開いた？</b> ファイルを自分宛てに送り（Telegram、Drive、メール）、端末で開いて長押し → <i>アプリで開く</i> → Minecraft。</div>
+</div></div>
+<figure><img src="../img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Craft Block の書き出しダイアログ。ステップ6で入力するコマンドが表示されています（Android）。</figcaption></figure>
+<figure><img src="../img/i1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>同じダイアログ、iPhone の場合。</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>ワールド一覧へ</h3>
+<p>Minecraft で <b>遊ぶ</b> を押します。<b>ワールド</b> タブにいます。</p>
+<p>新しいワールド：<b>新規作成</b> → <b>新しいワールドを作成</b>。既存のワールド：名前の横の <b>鉛筆</b> をタップします。名前そのものではありません。</p>
+<p class="see">見えるはずのもの：左に項目一覧（一般、ゲーム、リソースパック、ビヘイビアーパック…）が並ぶワールド設定。</p>
+</div></div>
+<figure><img src="../img/b2.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>鉛筆で既存ワールドの設定が開きます。</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>チートをオンにする</h3>
+<p>左の一覧 → <b>チート</b> → <b>チート</b> をオン（古いバージョンでは <b>ゲーム</b> の中に <i>チートの実行</i> としてあります）。このワールドで実績が無効になると警告されますが、問題ありません。はいを選びます。ついでに <b>一般</b> → ゲームモード → <b>クリエイティブ</b> にすると建築が楽になります。</p>
+<p class="see">見えるはずのもの：チートのスイッチが緑。（「実績は無効」の表示だけでは不十分です。クリエイティブのワールドはチートがオフでもそう表示されます。）</p>
+</div></div>
+<figure><img src="../img/b3.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>ワールドの編集 → チート → スイッチがオン。</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>このワールドでパックを有効にする</h3>
+<p>左の一覧 → <b>ビヘイビアーパック</b> → <b>マイパック</b> を開く → 建築の名前のパックをタップ → <b>有効にする</b>。</p>
+<p>ゲームが <i>ワールドを更新しますか？</i> と聞いてきたら <b>それでもパックを追加</b> を選びます。ゲームが作っていないものがワールドに入る、という注意にすぎません。</p>
+<p class="see">見えるはずのもの：パックが上の <b>有効</b> に移動しています。</p>
+<div class="oops"><b>「有効にする」ボタンがない？</b> プレイ中のワールドの中にいます。その画面はパックを<i>表示する</i>だけです。ワールドを出て（ポーズ → 保存して終了）、ステップ2のように鉛筆から戻ってください。</div>
+</div></div>
+<figure><img src="../img/b4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>ワールドの編集 → ビヘイビアーパック：建築が「有効」の下にあります（Android タブレット）。</figcaption></figure>
+<figure><img src="../img/i4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>同じ画面、iPhone の場合。</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>ワールドに入って場所を決める</h3>
+<p><b>作成</b>（新しいワールド）または <b>遊ぶ</b>（既存）を押します。平らで開けた場所まで歩きます。日の出のときに太陽が <b>正面</b> に来るように向きます。それが東です。建築は正面と右側の地面を埋めます。</p>
+<p class="see">見えるはずのもの：前方に、アプリが示したサイズ以上の平らな場所。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>コマンドを入力する</h3>
+<p>画面上部の <b>吹き出し</b> をタップしてチャットを開きます。ファイルを保存したとき、アプリがコマンドをクリップボードに入れています：<b>チャット欄を長押し → ペースト</b>。手で打つ場合は、<b>スペースで区切った2語</b>です。<code>function</code> という単語、そして建築の名前。My House という建築なら：</p>
+<span class="cmd">/function craft_my_house</span>
+<p>送信を押します。建築がすぐに現れます。</p>
+<p class="see">見えるはずのもの：アプリとまったく同じあなたの建築。</p>
+<div class="oops"><b>「Incorrect permission level for command: function」</b> チートはオンですが、あなたのプレイヤーがまだオペレーターではありません。ポーズ → <b>ソーシャル</b>（右上）→ 自分の名前をタップ → <b>オペレーター</b>。コマンドをもう一度入力します。</div>
+<div class="oops"><b>「Unknown command: craft_my_house」</b> <code>function</code> の単語が抜けています。タッチキーボードでは抜けやすいです。2語です：<code>/function craft_my_house</code>。</div>
+<div class="oops"><b>「Cheats aren't enabled in this world」</b> ステップ3ができていません：ポーズ → 設定 → 左の一覧の <b>チート</b> → オン。クリエイティブにしただけではチートはオンになりません。</div>
+<div class="oops"><b>入力した文字がチャットのメッセージになった</b> 先頭のスラッシュが抜けています。コマンドは <code>/</code> で始まります。iPhone のキーボードでは <b>123</b> の中にあります。</div>
+<div class="oops"><b>「Unknown function」</b> このワールドでステップ4ができていないか、別のワールドにいます。建築名のスペースはアンダースコアになります：<i>My House</i> → <code>craft_my_house</code>。</div>
+</div></div>
+<figure><img src="../img/b6.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>チャット：function という単語、スペース、建築の名前。</figcaption></figure>
+<figure><img src="../img/b7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>完成。アプリの Modern House が、タブレットの Bedrock ワールドに立っています。</figcaption></figure>
+<figure><img src="../img/i7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>同じ建築を iPhone から置いたところ。</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java：PC と Mac</h2>
+<p class="lead">Java は、ワールドのフォルダに入れた小さな <code>.zip</code> ファイルから建築を読み込みます。インストールするものはありません。</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Craft Block から書き出す</h3>
+<p>ホーム画面で建築を長押し → <b>Minecraft に書き出す</b> → <b>Java</b> → <b>.zip を保存</b>。ファイルを好きな方法でパソコンに送ります：AirDrop、メール、Telegram、ケーブル。<b>解凍しないでください。</b></p>
+<p class="see">見えるはずのもの：パソコン上の <code>my_house_datapack.zip</code> というファイル。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>ワールドのフォルダを開く</h3>
+<p><b>Mac：</b> Finder で <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span> を押し、<code>~/Library/Application Support/minecraft/saves</code> を貼り付けて Enter。<br><b>Windows：</b> <span class="kbd">Win</span><span class="kbd">R</span> を押し、<code>%appdata%\.minecraft\saves</code> と入力して Enter。<br><b>Linux：</b> <code>~/.minecraft/saves</code> を開きます。</p>
+<p>ワールド名のフォルダを開き、その中の <b>datapacks</b> フォルダを開きます。</p>
+<p class="see">見えるはずのもの：datapacks というフォルダ（空でも大丈夫、それが普通です）。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>.zip を入れる</h3>
+<p>ファイルを <b>datapacks</b> に移動します。zip のままで。</p>
+<p class="see">見えるはずのもの：datapacks の中にある .zip。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>パックを有効にする</h3>
+<p>ゲームでワールドを開きます。<span class="kbd">T</span> でチャットを開き、次の2行を順番に入力します。1行目には自分のファイル名を使います：</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">見えるはずのもの：1行目の後に「Enabled data pack …」、2行目の後に短い停止。</p>
+<div class="oops"><b>パックが「互換性がない」と出る？</b> そのまま有効にしてください、読み込まれます。Craft Block 2.6.0 以降の書き出しではこの表示は出ません。</div>
+<div class="oops"><b>コマンドが動かない？</b> このワールドはチートがオフです。ポーズ → <b>LAN に公開</b> → <b>チートの許可：オン</b> → LAN ワールドを開始。クリエイティブのワールドは最初からチートがオンです。</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>場所を決める</h3>
+<p>平らで開けた場所まで歩きます。<span class="kbd">F3</span>（Mac：<span class="kbd">fn</span><span class="kbd">F3</span>）を押し、<i>Facing</i> の行が <b>east</b> になるまで向きを変えます。建築は正面と右側の地面を埋めます。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>コマンドを入力する</h3>
+<p><span class="kbd">T</span> を押してアプリのコマンドを入力します（スマホでは横のコピーボタンでクリップボードに入ります）。Java では <b>コロン</b> が入ります。My House という建築なら：</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">見えるはずのもの：アプリとまったく同じあなたの建築。</p>
+<div class="oops"><b>「Unknown function」</b> ステップ4を飛ばしたか、名前が違います。Java はコロンを使い、スペースはアンダースコアになります：<i>My House</i> → <code>craft:my_house</code>。</div>
+</div></div>
+<figure><img src="../img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Java ワールドでのコマンドと建築。</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ COMMON ============================ -->
+<section id="spot"><div class="wrap">
+<h2>正確にはどこに現れる？</h2>
+<div class="compass">
+<h3>足元から、東と南へ広がります。</h3>
+<p>東（太陽が昇る方向）を向くと、建築は正面と右側の地面を埋めます。幅、奥行き、高さはアプリが教えてくれます。建築はそのまま置かれます：丘の上なら一部が丘の中に埋まり、湖の上なら水が入り込みます。まず平らな地面、それからコマンドです。</p>
+</div>
+<details class="more"><summary>プレビューと正確な配置がしたい（ストラクチャーブロック）</summary>
+<p>ゲーム自身のストラクチャーブロックは、置く前に建築の輪郭を描き、位置の微調整や回転ができます。<code>/give @s structure_block</code> で入手して設置し、開いてモードを <b>ロード</b> にし、名前欄に建築名（両エディションとも <code>craft:my_house</code>）を入力し、境界ボックスをオンにして、輪郭がぴったり収まるまでオフセットを調整し、<b>ロード</b> します。1つのブロックで扱えるのは Java で一辺48ブロック、Bedrock で64ブロックまで。それより大きい建築は複数パーツで届き、アプリが各パーツのオフセットを示します。</p>
+</details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>何かおかしいときは</h2>
+<div class="qa">
+<details><summary>ドア、松明、花が消えている</summary><p>これらは下に固い地面が必要です。建築がくぼみ、穴、水の上に置かれると、読み込んだ瞬間にゲームが落としてしまいます。平らな地面に置くか、先に地面を埋めてください。</p></details>
+<details><summary>水があちこちに流れている</summary><p>建築に池やプールがあり、地面より上に置かれたので、水がとどまる場所がありませんでした。もっと低く、地面の上に置けば、水は水槽の中にとどまります。</p></details>
+<details><summary>角の階段がまっすぐになった</summary><p>階段の角の形は、手で置くときと同じように、ゲームが隣のブロックから判断します。隣に階段がない角の階段はまっすぐになり、完成した屋根の中では角になります。</p></details>
+<details><summary>動物がいない</summary><p>Craft Block の動物は装飾で、ブロックではありません。ゲームにはそのブロックがないので、プランナーの中に残ります。書き出す前にアプリが何匹あるかを教えてくれます。</p></details>
+<details><summary>Xbox、PlayStation、Switch で遊んでいる</summary><p>コンソールはファイルを開けないので、パックを直接読み込めません。スマホ、タブレット、PC で読み込み（上のステップ1）、ワールドに建築を置いてから、そのワールドを Realm にアップロードし、コンソールから Realm に参加します。Realm がない場合、建築は読み込んだ端末にとどまります。</p></details>
+<details><summary>クリエイティブのワールドでないとだめ？</summary><p>いいえ。サバイバルを含めどのゲームモードでも大丈夫です。コマンドに必要なのはそのワールドでチートがオンになっていることだけで、チートで失うのはそのワールドの実績だけです。クリエイティブは建築を眺めるのに楽なだけです：飛べますし、何も噛みつきません。</p></details>
+<details><summary>書き出しは無料？</summary><p>最初の3回は無料です。その後、書き出しは Craft Block Premium の機能になります。このページのことはすべてゲーム自身が行い、費用はかかりません。</p></details>
+</div>
+</div></section>
+
+<footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">アプリについて</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Minecraft の公式製品ではありません。Mojang および Microsoft の承認を受けておらず、関係もありません。</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
+</body>
+</html>

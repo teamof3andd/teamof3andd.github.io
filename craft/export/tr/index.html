@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Craft Block yapını Minecraft'a koy — adım adım</title>
+<meta name="description" content="Craft Block'tan dışa aktarılan bir yapıyı kendi Minecraft dünyana nasıl yüklersin: Bedrock (telefon, tablet, konsol, Windows) ve Java (PC, Mac). Her adımda tek işlem, mod yok.">
+<link rel="canonical" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
+<link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
+<link rel="alternate" hreflang="de" href="https://teamof3andd.com/craft/export/de/">
+<link rel="alternate" hreflang="es" href="https://teamof3andd.com/craft/export/es/">
+<link rel="alternate" hreflang="fr" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="it" href="https://teamof3andd.com/craft/export/it/">
+<link rel="alternate" hreflang="ja" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="ko" href="https://teamof3andd.com/craft/export/ko/">
+<link rel="alternate" hreflang="pl" href="https://teamof3andd.com/craft/export/pl/">
+<link rel="alternate" hreflang="pt" href="https://teamof3andd.com/craft/export/pt/">
+<link rel="alternate" hreflang="ru" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="tr" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="vi" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://teamof3andd.com/craft/export/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
+<link rel="icon" href="/assets/craft_icon.png">
+<meta property="og:title" content="Craft Block yapını Minecraft'a koy"><meta property="og:description" content="Bedrock ve Java, mod yok: uygulamadan dışa aktar, oyunda tek komut."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<style>
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
+.hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
+code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
+.langs{max-width:820px;margin:10px auto 0;padding:0 20px;font-size:13px;color:var(--grey);line-height:1.9}.langs a{color:var(--grey)}.langs b{color:var(--ink)}
+footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">Gizlilik</a></div></div></nav>
+<div class="langs"><a href="/craft/export/">English</a> · <a href="/craft/export/uk/">Українська</a> · <a href="/craft/export/de/">Deutsch</a> · <a href="/craft/export/es/">Español</a> · <a href="/craft/export/fr/">Français</a> · <a href="/craft/export/it/">Italiano</a> · <a href="/craft/export/ja/">日本語</a> · <a href="/craft/export/ko/">한국어</a> · <a href="/craft/export/pl/">Polski</a> · <a href="/craft/export/pt/">Português</a> · <a href="/craft/export/ru/">Русский</a> · <b>Türkçe</b> · <a href="/craft/export/vi/">Tiếng Việt</a> · <a href="/craft/export/zh/">简体中文</a> · <a href="/craft/export/zh-hant/">繁體中文</a></div>
+
+<header class="hero"><div class="wrap">
+<h1>Yapın, kendi dünyanda</h1>
+<p>Altı adım. Her birinde tek bir iş. Sonunda tek bir komut yazarsın ve yapı önünde belirir. Mod yok.</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">Telefon, tablet, konsol veya Windows'ta oynuyorum<small>Bu Minecraft <b>Bedrock</b>, uygulama mağazasındaki sürüm.</small></button>
+<button id="pickJ" onclick="pick('java')">PC veya Mac'te Launcher ile oynuyorum<small>Bu Minecraft <b>Java</b>.</small></button>
+</div>
+</div></header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about"><div class="wrap">
+<h2>Dışa aktarma ne yapar</h2>
+<p class="lead">Craft Block, ekranındaki yapıyı oyunun anladığı bir dosyaya çevirir. Bu dosyayı Minecraft'ta açar, tek bir komut yazarsın ve aynı yapı dünyanda, blok blok, gerçek boyutta belirir.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Düğme nerede</h3>
+<p>Ana ekran → bir yapıya basılı tut → <b>Minecraft'a Aktar</b>. Her yapı olur: kendi yapın ya da örneklerden biri.</p>
+</div></div>
+<figure><img src="../img/b0.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Bu menüyü açmak için bir yapıya basılı tut.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Hangi sürümü oynuyorum?</h3>
+<p>Minecraft'ı App Store, Google Play veya Microsoft Store'dan kurduysan ya da Xbox, PlayStation veya Switch'te oynuyorsan <b>Bedrock</b>. PC veya Mac'te <i>Minecraft Launcher</i> ile başlatıyorsan <b>Java</b>. Emin değil misin? Oyunun başlık ekranında Bedrock köşede <i>v1.21.x</i> gibi bir sürüm gösterir; Java ise <i>Minecraft 1.21.x</i> ve Launcher'ı gösterir.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Ne alırsın</h3>
+<p><b>Bedrock:</b> <code>.mcpack</code> ile biten tek bir dosya. Açınca oyuna yapının adını taşıyan bir paket girer. <b>Java:</b> <code>_datapack.zip</code> ile biten tek bir <code>.zip</code>; dünyanın klasörüne gider. İkisi de minicik ve yalnızca bloklarını içerir, başka hiçbir şey.</p>
+<p>Uygulama dışa aktarmadan önce boyutu gösterir: kaç blok, ne kadar geniş, derin ve yüksek. Büyük yapılar aynı dosya içinde birkaç parçaya bölünür; komut yine hepsini bir kerede yerleştirir.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Ne aktarılır, ne aktarılmaz</h3>
+<p><b>Aktarılır:</b> merdivenler, basamaklar, kapılar, meşaleler, cam, su, bitkiler dahil her blok, verdiğin yönle birlikte.</p>
+<p><b>Değiştirilir:</b> birkaç blok yalnızca Craft Block'ta var. Uygulama her birini ve oyunun yerine ne aldığını listeler (örneğin lotus pembe laleye dönüşür). Hiçbir şey sessizce atılmaz.</p>
+<p><b>Uygulamada kalır:</b> hayvanlar ve diğer yaratıklar (süslemedir, oyunda onlar için blok yok) ve içe aktardığın her doku paketi; oyun kendi dokularını kullanır.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Nereye iner</h3>
+<p>Komutu yazdığında durduğun yere. Yapı ayaklarının dibinden başlar, doğuya ve güneye büyür; bu yüzden önce doğuya dön. Ayrıntılar ve tam yeri önceden görmenin yolu aşağıda, <a href="#spot">Tam olarak nerede belirir?</a> bölümünde.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Kaç kez dışa aktarabilirim?</h3>
+<p>Üç kez ücretsiz. Sonrasında dışa aktarma Craft Block Premium'un parçası. Dosyanın kendisi hiç geçersiz olmaz: bir kez aldıysan yapıyı istediğin kadar dünyaya koyabilirsin.</p>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock: telefon, tablet, konsol, Windows</h2>
+<p class="lead">Her adım tek bir ekran. Altındaki satır, işe yaradığında ne görmen gerektiğini söyler. Görseller bir Android tablet ve bir iPhone'dan; Windows'ta da aynı görünür.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Craft Block'tan dışa aktar</h3>
+<p>Ana ekranda yapına basılı tut → <b>Minecraft'a Aktar</b> → <b>Bedrock</b> → <b>.mcpack kaydet</b>.</p>
+<p>Sonra dosyayı oyuna sok; cihaza göre değişen tek adım bu:</p>
+<p><b>Android telefon veya tablet:</b> Minecraft kendiliğinden açılır ve paketi içe aktarır.</p>
+<p><b>iPhone veya iPad:</b> bir paylaşım sayfası açılır. <b>Minecraft</b>'ı seç. Listede yoksa <b>Dosyalar'a Kaydet</b>'i seç, sonra Dosyalar uygulamasını açıp dosyaya dokun.</p>
+<p><b>Windows 10/11 (Microsoft Store'dan Bedrock):</b> dosyayı PC'ye gönder (e-posta, OneDrive, kablo) ve çift tıkla. Minecraft açılır ve içe aktarır.</p>
+<p><b>Xbox, PlayStation, Switch:</b> konsol dosya açamaz. Paketi bir telefon veya PC'de içe aktar, yapıyı orada bir dünyaya koy ve o dünyayı bir <b>Realm</b> ile konsola taşı (Realms'te Oyna → dünyayı yükle; konsol sonra katılır). Ya da o dünyayı telefonda oyna.</p>
+<p class="see">Görmen gereken: Minecraft üstte <b>İçe aktarma başarılı</b> gösterir.</p>
+<div class="oops"><b>Hiçbir şey olmadı ya da dosya başka yerde mi açıldı?</b> Dosyayı kendine gönder (Telegram, Drive, e-posta), cihazda aç, basılı tut → <i>Birlikte aç</i> → Minecraft.</div>
+</div></div>
+<figure><img src="../img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Craft Block'taki dışa aktarma penceresi, 6. adımda yazacağın komutla birlikte (Android).</figcaption></figure>
+<figure><img src="../img/i1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Aynı pencere iPhone'da.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Dünyalarına git</h3>
+<p>Minecraft'ta <b>Oyna</b>'ya bas. <b>Dünyalar</b> sekmesindesin.</p>
+<p>Yeni dünya: <b>Yeni Oluştur</b> → <b>Yeni Dünya Oluştur</b>. Var olan dünya: adının yanındaki <b>kaleme</b> dokun, adın kendisine değil.</p>
+<p class="see">Görmen gereken: solda bölüm listesi olan dünya ayarları (Genel, Oyun, Kaynak Paketleri, Davranış Paketleri…).</p>
+</div></div>
+<figure><img src="../img/b2.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Kalem, var olan bir dünyanın ayarlarını açar.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Hileleri aç</h3>
+<p>Sol liste → <b>Hileler</b> → <b>Hileler</b>'i aç (eski sürümlerde <b>Oyun</b> altında <i>Hileleri Etkinleştir</i> olarak). Oyun bu dünyada başarımların kapanacağı konusunda uyarır; sorun yok, onayla. Hazır buradayken <b>Genel</b> → Oyun Modu → <b>Yaratıcı</b> inşa etmeyi kolaylaştırır.</p>
+<p class="see">Görmen gereken: Hileler anahtarı yeşil. (Tek başına “Başarımlar devre dışı” yeterli değil; Yaratıcı bir dünya bunu hileler kapalıyken de gösterir.)</p>
+</div></div>
+<figure><img src="../img/b3.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Dünyayı Düzenle → Hileler → anahtar açık.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Paketi bu dünya için etkinleştir</h3>
+<p>Sol liste → <b>Davranış Paketleri</b> → <b>Paketlerim</b>'i aç → yapının adını taşıyan pakete dokun → <b>Etkinleştir</b>.</p>
+<p>Oyun <i>Dünya güncellensin mi?</i> diye sorarsa <b>Paketi yine de ekle</b>'yi seç; yalnızca dünyanın kendi yapmadığı bir şey içereceği konusunda uyarır.</p>
+<p class="see">Görmen gereken: paket yukarı, <b>Etkin</b> bölümüne taşındı.</p>
+<div class="oops"><b>Etkinleştir düğmesi yok mu?</b> Çalışan bir dünyanın içindesin; o ekran paketleri yalnızca <i>gösterir</i>. Dünyadan çık (duraklat → Kaydet ve Çık) ve 2. adımdaki gibi kalemden geri gel.</div>
+</div></div>
+<figure><img src="../img/b4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Dünyayı Düzenle → Davranış paketleri: yapı Etkin altında (Android tablet).</figcaption></figure>
+<figure><img src="../img/i4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Aynı ekran iPhone'da.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Dünyaya gir ve yeri seç</h3>
+<p><b>Oluştur</b> (yeni dünya) ya da <b>Oyna</b>'ya (var olan) bas. Düz, açık bir alana yürü. Güneş doğarken <b>önünde</b> olacak şekilde dön; orası doğu. Yapı önündeki ve sağındaki alanı dolduracak.</p>
+<p class="see">Görmen gereken: önünde, en az uygulamanın gösterdiği boyutta düz bir alan.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Komutu yaz</h3>
+<p>Sohbeti açmak için ekranın üstündeki <b>konuşma balonuna</b> dokun. Dosyayı kaydettiğinde uygulama komutu panoya koydu: <b>sohbet alanına basılı tut → Yapıştır</b>. Ya da yaz: <b>boşlukla ayrılmış iki kelime</b>, <code>function</code> kelimesi ve ardından yapının adı. My House adlı bir yapı için:</p>
+<span class="cmd">/function craft_my_house</span>
+<p>Gönder'e bas. Yapı hemen belirir.</p>
+<p class="see">Görmen gereken: yapın, tam uygulamadaki gibi.</p>
+<div class="oops"><b>“Incorrect permission level for command: function”</b> Hileler açık ama oyuncun henüz operatör değil. Duraklat → <b>Sosyal</b> (sağ üst) → kendi adına dokun → <b>Operatör</b>. Komutu tekrar yaz.</div>
+<div class="oops"><b>“Unknown command: craft_my_house”</b> <code>function</code> kelimesi kaybolmuş; dokunmatik klavyede kolay kaybolur. İki kelime: <code>/function craft_my_house</code>.</div>
+<div class="oops"><b>“Cheats aren't enabled in this world”</b> 3. adım yapılmamış: duraklat → Ayarlar → sol listede <b>Hileler</b> → aç. Yaratıcı mod tek başına hileleri açmaz.</div>
+<div class="oops"><b>Yazdığın metin sohbet mesajı olarak göründü</b> Baştaki eğik çizgi kaybolmuş. Komutlar <code>/</code> ile başlar; iPhone klavyesinde <b>123</b> altında.</div>
+<div class="oops"><b>“Unknown function”</b> 4. adım bu dünya için yapılmamış ya da başka bir dünyadasın. Yapı adındaki boşluklar alt çizgiye dönüşür: <i>My House</i> → <code>craft_my_house</code>.</div>
+</div></div>
+<figure><img src="../img/b6.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Sohbet: function kelimesi, bir boşluk, yapının adı.</figcaption></figure>
+<figure><img src="../img/b7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Ve işte: uygulamadaki Modern House, tablette bir Bedrock dünyasında.</figcaption></figure>
+<figure><img src="../img/i7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Aynı yapı iPhone'dan yerleştirilmiş.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java: PC ve Mac</h2>
+<p class="lead">Java, yapıyı dünyanın klasörüne bıraktığın küçük bir <code>.zip</code> dosyasından okur. Kurulacak bir şey yok.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Craft Block'tan dışa aktar</h3>
+<p>Ana ekranda yapına basılı tut → <b>Minecraft'a Aktar</b> → <b>Java</b> → <b>.zip kaydet</b>. Dosyayı bilgisayarına istediğin gibi gönder: AirDrop, e-posta, Telegram, kablo. <b>Açma (unzip yapma).</b></p>
+<p class="see">Görmen gereken: bilgisayarda <code>my_house_datapack.zip</code> adlı bir dosya.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Dünyanın klasörünü aç</h3>
+<p><b>Mac:</b> Finder'da <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span> tuşlarına bas, <code>~/Library/Application Support/minecraft/saves</code> yapıştır, Enter.<br><b>Windows:</b> <span class="kbd">Win</span><span class="kbd">R</span> tuşlarına bas, <code>%appdata%\.minecraft\saves</code> yaz, Enter.<br><b>Linux:</b> <code>~/.minecraft/saves</code> klasörünü aç.</p>
+<p>Dünyanın adını taşıyan klasörü, sonra içindeki <b>datapacks</b> klasörünü aç.</p>
+<p class="see">Görmen gereken: datapacks adlı bir klasör (boş olabilir, bu normal).</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>.zip dosyasını içine bırak</h3>
+<p>Dosyayı <b>datapacks</b> içine taşı. Hâlâ zip olarak.</p>
+<p class="see">Görmen gereken: .zip dosyası datapacks içinde.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Paketi etkinleştir</h3>
+<p>Dünyayı oyunda aç. Sohbet için <span class="kbd">T</span> tuşuna bas ve şu iki satırı art arda yaz. İlkinde kendi dosyanın adını kullan:</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">Görmen gereken: ilk satırdan sonra “Enabled data pack …”, ikincisinden sonra kısa bir duraklama.</p>
+<div class="oops"><b>Paket “uyumsuz” mu diyor?</b> Yine de etkinleştir, yüklenir. Craft Block 2.6.0 ve sonrasından yapılan dışa aktarmalar bunu göstermez.</div>
+<div class="oops"><b>Komutlar çalışmıyor mu?</b> Bu dünyada hileler kapalı. Duraklat → <b>LAN'a Aç</b> → <b>Hilelere İzin Ver: AÇIK</b> → LAN Dünyasını Başlat. Yaratıcı dünyalarda hileler zaten açık.</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Yeri seç</h3>
+<p>Düz, açık bir alana yürü. <span class="kbd">F3</span> tuşuna bas (Mac: <span class="kbd">fn</span><span class="kbd">F3</span>) ve <i>Facing</i> satırı <b>east</b> gösterene kadar dön. Yapı önündeki ve sağındaki alanı dolduracak.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Komutu yaz</h3>
+<p><span class="kbd">T</span> tuşuna bas ve uygulamadaki komutu yaz (telefonda yanındaki Kopyala düğmesi panoya koyar). Java'da <b>iki nokta</b> içerir. My House adlı bir yapı için:</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">Görmen gereken: yapın, tam uygulamadaki gibi.</p>
+<div class="oops"><b>“Unknown function”</b> 4. adım atlanmış ya da ad yanlış: Java iki nokta kullanır ve boşluklar alt çizgiye dönüşür: <i>My House</i> → <code>craft:my_house</code>.</div>
+</div></div>
+<figure><img src="../img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Komut ve yapı bir Java dünyasında.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ COMMON ============================ -->
+<section id="spot"><div class="wrap">
+<h2>Tam olarak nerede belirir?</h2>
+<div class="compass">
+<h3>Ayaklarının dibinde, doğuya ve güneye doğru büyür.</h3>
+<p>Doğuya dön (güneş oradan doğar); yapı önündeki ve sağındaki alanı doldurur. Uygulama ne kadar geniş, derin ve yüksek olduğunu söyler. Yapı olduğu gibi yerleştirilir: bir tepenin üzerinde bir kısmı tepenin içinde kalır; bir gölün üzerinde içine su dolar. Önce düz zemin, sonra komut.</p>
+</div>
+<details class="more"><summary>Önizleme ve tam kontrol istiyorum (yapı bloğu)</summary>
+<p>Oyunun kendi yapı bloğu, yerleştirmeden önce yapının dış hatlarını çizer ve kaydırıp döndürmene izin verir. <code>/give @s structure_block</code> ile bir tane al, yerleştir, aç, modu <b>Yükle</b> yap, ad alanına yapının adını yaz (her iki sürümde de <code>craft:my_house</code>), sınır kutusunu aç, dış hatlar yerine oturana kadar kaydırmaları ayarla, sonra <b>Yükle</b>. Bir blok Java'da kenar başına 48, Bedrock'ta 64 bloğa kadar alır; daha büyük yapılar birkaç parça halinde gelir ve uygulama her birinin kaydırmasını listeler.</p>
+</details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Bir şey ters görünüyorsa</h2>
+<div class="qa">
+<details><summary>Bir kapı, meşale ya da çiçek eksik</summary><p>Altlarında sağlam zemin gerekir. Yapı bir çukurun, deliğin ya da suyun üzerine indiyse oyun bunları yüklenir yüklenmez düşürür. Düz zemine yerleştir ya da önce zemini doldur.</p></details>
+<details><summary>Su her yere akıyor</summary><p>Yapında bir gölet ya da havuz var ve zeminin üstüne yerleştirildi, bu yüzden suyun duracak yeri yoktu. Daha aşağıya, zemine yerleştir; su havzasında kalır.</p></details>
+<details><summary>Köşe merdiveni düz çıktı</summary><p>Oyun, bir merdivenin köşe şeklini komşularına göre belirler; elle yerleştirdiğinde de aynen böyle. Yanında merdiven olmayan bir köşe merdiveni düzdür; bitmiş bir çatıda köşedir.</p></details>
+<details><summary>Hayvanlarım yok</summary><p>Craft Block'taki hayvanlar süslemedir, blok değil. Oyunda onlar için blok yok, bu yüzden planlayıcıda kalırlar. Uygulama dışa aktarmadan önce kaç tane olduğunu söyler.</p></details>
+<details><summary>Xbox, PlayStation veya Switch'te oynuyorum</summary><p>Konsollar dosya açamaz, bu yüzden paket oraya doğrudan içe aktarılamaz. Bir telefon, tablet veya PC'de içe aktar (yukarıdaki 1. adım), yapıyı bir dünyaya koy, sonra o dünyayı bir Realm'e yükle ve konsoldan Realm'e katıl. Realm olmadan yapı, içe aktardığın cihazda kalır.</p></details>
+<details><summary>Yaratıcı dünya olmak zorunda mı?</summary><p>Hayır. Her oyun modu olur, Hayatta Kalma dahil; komutun tek ihtiyacı o dünyada hilelerin açık olması ve hileler orada yalnızca başarımlara mal olur. Yaratıcı mod sadece yapıya bakmak için daha rahat: uçabilirsin ve hiçbir şey ısırmaz.</p></details>
+<details><summary>Dışa aktarma ücretsiz mi?</summary><p>İlk üç dışa aktarma ücretsiz. Sonrasında dışa aktarma Craft Block Premium'un parçası. Bu sayfadaki her şeyi oyunun kendisi yapar ve hiçbir ücreti yoktur.</p></details>
+</div>
+</div></section>
+
+<footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">Uygulama hakkında</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Resmi bir Minecraft ürünü değildir. Mojang veya Microsoft tarafından onaylanmamıştır ve onlarla ilişkili değildir.</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
+</body>
+</html>

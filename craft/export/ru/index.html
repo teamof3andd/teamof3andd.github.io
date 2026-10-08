@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Поставь постройку из Craft Block в Minecraft — шаг за шагом</title>
+<meta name="description" content="Как загрузить постройку, экспортированную из Craft Block, в свой мир Minecraft: Bedrock (телефон, планшет, консоль, Windows) и Java (ПК, Mac). Одно действие на шаг, без модов.">
+<link rel="canonical" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
+<link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
+<link rel="alternate" hreflang="de" href="https://teamof3andd.com/craft/export/de/">
+<link rel="alternate" hreflang="es" href="https://teamof3andd.com/craft/export/es/">
+<link rel="alternate" hreflang="fr" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="it" href="https://teamof3andd.com/craft/export/it/">
+<link rel="alternate" hreflang="ja" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="ko" href="https://teamof3andd.com/craft/export/ko/">
+<link rel="alternate" hreflang="pl" href="https://teamof3andd.com/craft/export/pl/">
+<link rel="alternate" hreflang="pt" href="https://teamof3andd.com/craft/export/pt/">
+<link rel="alternate" hreflang="ru" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="tr" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="vi" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://teamof3andd.com/craft/export/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
+<link rel="icon" href="/assets/craft_icon.png">
+<meta property="og:title" content="Поставь постройку из Craft Block в Minecraft"><meta property="og:description" content="Bedrock и Java, без модов: экспорт из приложения, одна команда в игре."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<style>
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
+.hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
+code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
+.langs{max-width:820px;margin:10px auto 0;padding:0 20px;font-size:13px;color:var(--grey);line-height:1.9}.langs a{color:var(--grey)}.langs b{color:var(--ink)}
+footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">Конфиденциальность</a></div></div></nav>
+<div class="langs"><a href="/craft/export/">English</a> · <a href="/craft/export/uk/">Українська</a> · <a href="/craft/export/de/">Deutsch</a> · <a href="/craft/export/es/">Español</a> · <a href="/craft/export/fr/">Français</a> · <a href="/craft/export/it/">Italiano</a> · <a href="/craft/export/ja/">日本語</a> · <a href="/craft/export/ko/">한국어</a> · <a href="/craft/export/pl/">Polski</a> · <a href="/craft/export/pt/">Português</a> · <b>Русский</b> · <a href="/craft/export/tr/">Türkçe</a> · <a href="/craft/export/vi/">Tiếng Việt</a> · <a href="/craft/export/zh/">简体中文</a> · <a href="/craft/export/zh-hant/">繁體中文</a></div>
+
+<header class="hero"><div class="wrap">
+<h1>Твоя постройка в твоём мире</h1>
+<p>Шесть шагов. По одному действию в каждом. В конце ты вводишь одну команду, и постройка появляется перед тобой. Без модов.</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">Я играю на телефоне, планшете, консоли или Windows<small>Это Minecraft <b>Bedrock</b> — тот, что из магазина приложений.</small></button>
+<button id="pickJ" onclick="pick('java')">Я играю на ПК или Mac через Launcher<small>Это Minecraft <b>Java</b>.</small></button>
+</div>
+</div></header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about"><div class="wrap">
+<h2>Что делает экспорт</h2>
+<p class="lead">Craft Block превращает постройку с твоего экрана в файл, который понимает игра. Ты открываешь этот файл в Minecraft, вводишь одну команду, и та же постройка появляется в твоём мире, блок в блок, в реальном размере.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Где кнопка</h3>
+<p>Главный экран → зажми постройку → <b>Экспорт в Minecraft</b>. Подходит любая: твоя или один из примеров.</p>
+</div></div>
+<figure><img src="../img/b0.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Зажми постройку, чтобы открыть это меню.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Какое у меня издание?</h3>
+<p><b>Bedrock</b>, если ты установил Minecraft из App Store, Google Play, Microsoft Store или играешь на Xbox, PlayStation или Switch. <b>Java</b>, если запускаешь его через <i>Minecraft Launcher</i> на ПК или Mac. Не уверен? На главном экране игры Bedrock показывает в углу версию вроде <i>v1.21.x</i>; Java показывает <i>Minecraft 1.21.x</i> и Launcher.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Что ты получаешь</h3>
+<p><b>Bedrock:</b> один файл с расширением <code>.mcpack</code>. Если его открыть, в игре появляется пакет с названием твоей постройки. <b>Java:</b> один <code>.zip</code>, заканчивающийся на <code>_datapack.zip</code>, который кладётся в папку мира. Оба крошечные и содержат только твои блоки, больше ничего.</p>
+<p>Перед экспортом приложение показывает размер: сколько блоков, какая ширина, глубина и высота. Большие постройки разбиваются на несколько частей внутри одного файла; команда всё равно ставит их все сразу.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Что переносится, а что нет</h3>
+<p><b>Переносится:</b> каждый блок, включая ступени, плиты, двери, факелы, стекло, воду, растения, с тем направлением, которое ты задал.</p>
+<p><b>Заменяется:</b> несколько блоков есть только в Craft Block. Приложение перечисляет каждый и то, что игра получит вместо него (например, лотос становится розовым тюльпаном). Ничего не пропадает молча.</p>
+<p><b>Остаётся в приложении:</b> животные и другие существа (это декорации, у игры нет для них блока) и любой текстур-пак, который ты импортировал — игра использует свои текстуры.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Где она встанет</h3>
+<p>Там, где ты стоишь, когда вводишь команду. Постройка начинается у твоих ног и растёт на восток и на юг, поэтому сначала повернись лицом на восток. Подробности и способ увидеть точное место заранее — ниже, в разделе <a href="#spot">Где именно она появится?</a></p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Сколько раз можно экспортировать?</h3>
+<p>Три раза бесплатно. Дальше экспорт входит в Craft Block Premium. Сам файл никогда не устаревает: если он у тебя есть, можешь ставить постройку в сколько угодно миров.</p>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock: телефон, планшет, консоль, Windows</h2>
+<p class="lead">Каждый шаг — один экран. Строка под каждым говорит, что ты должен увидеть, когда всё сработало. Картинки с Android-планшета и iPhone; на Windows всё выглядит так же.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Экспортируй из Craft Block</h3>
+<p>На главном экране зажми свою постройку → <b>Экспорт в Minecraft</b> → <b>Bedrock</b> → <b>Сохранить .mcpack</b>.</p>
+<p>Затем передай файл в игру — это единственный шаг, который зависит от устройства:</p>
+<p><b>Телефон или планшет на Android:</b> Minecraft открывается сам и импортирует пакет.</p>
+<p><b>iPhone или iPad:</b> открывается лист «Поделиться». Выбери <b>Minecraft</b>. Если его нет в списке, выбери <b>Сохранить в Файлы</b>, затем открой приложение Файлы и коснись файла.</p>
+<p><b>Windows 10/11 (Bedrock из Microsoft Store):</b> отправь файл на ПК (почта, OneDrive, кабель) и дважды щёлкни по нему. Minecraft запустится и импортирует его.</p>
+<p><b>Xbox, PlayStation, Switch:</b> консоль не умеет открывать файлы. Импортируй пакет на телефоне или ПК, поставь там постройку в мир и перенеси этот мир на консоль через <b>Realm</b> (Играть на Realms → загрузить мир; консоль потом к нему присоединяется). Или просто играй в том мире на телефоне.</p>
+<p class="see">Ты должен увидеть: Minecraft показывает вверху <b>Импорт успешен</b>.</p>
+<div class="oops"><b>Ничего не произошло или файл открылся где-то ещё?</b> Отправь файл себе (Telegram, Drive, почта), открой его на устройстве, зажми → <i>Открыть с помощью</i> → Minecraft.</div>
+</div></div>
+<figure><img src="../img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Диалог экспорта в Craft Block с командой, которую ты введёшь в шаге 6 (Android).</figcaption></figure>
+<figure><img src="../img/i1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Тот же диалог на iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Перейди к своим мирам</h3>
+<p>В Minecraft нажми <b>Играть</b>. Ты на вкладке <b>Миры</b>.</p>
+<p>Новый мир: <b>Создать</b> → <b>Создать новый мир</b>. Существующий мир: коснись <b>карандаша</b> рядом с его названием — не самого названия.</p>
+<p class="see">Ты должен увидеть: настройки мира со списком разделов слева (Общие, Игра, Пакеты ресурсов, Пакеты поведения…).</p>
+</div></div>
+<figure><img src="../img/b2.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Карандаш открывает настройки существующего мира.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Включи читы</h3>
+<p>Список слева → <b>Читы</b> → включи <b>Читы</b> (в старых версиях это в разделе <b>Игра</b> как <i>Включить читы</i>). Игра предупредит, что в этом мире отключатся достижения — это нормально, соглашайся. Заодно <b>Общие</b> → Режим игры → <b>Творческий</b> упростит строительство.</p>
+<p class="see">Ты должен увидеть: переключатель «Читы» зелёный. (Одной надписи «Достижения отключены» мало — мир в Творческом режиме показывает её и без читов.)</p>
+</div></div>
+<figure><img src="../img/b3.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Редактировать мир → Читы → переключатель включён.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Включи пакет для этого мира</h3>
+<p>Список слева → <b>Пакеты поведения</b> → открой <b>Мои пакеты</b> → коснись пакета с названием твоей постройки → <b>Активировать</b>.</p>
+<p>Если игра спросит <i>Обновить мир?</i>, выбери <b>Всё равно добавить пакет</b> — это лишь предупреждение, что в мире будет что-то, чего игра сама не создавала.</p>
+<p class="see">Ты должен увидеть: пакет переместился вверх, в <b>Активные</b>.</p>
+<div class="oops"><b>Нет кнопки «Активировать»?</b> Ты внутри запущенного мира — тот экран лишь <i>показывает</i> пакеты. Выйди из мира (пауза → Сохранить и выйти) и вернись через карандаш, как в шаге 2.</div>
+</div></div>
+<figure><img src="../img/b4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Редактировать мир → Пакеты поведения: постройка в разделе «Активные» (Android-планшет).</figcaption></figure>
+<figure><img src="../img/i4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Тот же экран на iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Войди в мир и выбери место</h3>
+<p>Нажми <b>Создать</b> (новый мир) или <b>Играть</b> (существующий). Дойди до ровной открытой площадки. Повернись так, чтобы восходящее солнце было <b>перед тобой</b> — это восток. Постройка заполнит землю впереди и справа от тебя.</p>
+<p class="see">Ты должен увидеть: ровную площадку впереди, не меньше размера, который показало приложение.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Введи команду</h3>
+<p>Коснись <b>пузыря чата</b> вверху экрана, чтобы открыть чат. Приложение положило команду в буфер обмена, когда ты сохранил файл: <b>зажми поле чата → Вставить</b>. Или введи вручную — это <b>два слова через пробел</b>: слово <code>function</code>, затем название постройки. Для постройки с названием My House:</p>
+<span class="cmd">/function craft_my_house</span>
+<p>Нажми «отправить». Постройка появится сразу.</p>
+<p class="see">Ты должен увидеть: свою постройку, точно как в приложении.</p>
+<div class="oops"><b>«Incorrect permission level for command: function»</b> Читы включены, но твой игрок ещё не оператор. Пауза → <b>Социальное</b> (справа вверху) → нажми своё имя → <b>Оператор</b>. Введи команду ещё раз.</div>
+<div class="oops"><b>«Unknown command: craft_my_house»</b> Потерялось слово <code>function</code> — на сенсорной клавиатуре это легко. Два слова: <code>/function craft_my_house</code>.</div>
+<div class="oops"><b>«Cheats aren't enabled in this world»</b> Шаг 3 не сделан: пауза → Настройки → <b>Читы</b> в списке слева → включи. Сам по себе Творческий режим читы не включает.</div>
+<div class="oops"><b>Твой текст появился как сообщение в чате</b> Потерялась косая черта в начале. Команды начинаются с <code>/</code> — на клавиатуре iPhone она под <b>123</b>.</div>
+<div class="oops"><b>«Unknown function»</b> Шаг 4 не сделан для этого мира, или ты в другом мире. Пробелы в названии постройки становятся подчёркиваниями: <i>My House</i> → <code>craft_my_house</code>.</div>
+</div></div>
+<figure><img src="../img/b6.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Чат: слово function, пробел, название постройки.</figcaption></figure>
+<figure><img src="../img/b7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>И вот она — Modern House из приложения в мире Bedrock на планшете.</figcaption></figure>
+<figure><img src="../img/i7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Та же постройка, поставленная с iPhone.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java: ПК и Mac</h2>
+<p class="lead">Java читает постройку из маленького файла <code>.zip</code>, который ты кладёшь в папку своего мира. Ничего устанавливать не нужно.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Экспортируй из Craft Block</h3>
+<p>На главном экране зажми свою постройку → <b>Экспорт в Minecraft</b> → <b>Java</b> → <b>Сохранить .zip</b>. Передай файл на компьютер как удобно: AirDrop, почта, Telegram, кабель. <b>Не распаковывай его.</b></p>
+<p class="see">Ты должен увидеть: файл <code>my_house_datapack.zip</code> на компьютере.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Открой папку своего мира</h3>
+<p><b>Mac:</b> в Finder нажми <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, вставь <code>~/Library/Application Support/minecraft/saves</code>, Enter.<br><b>Windows:</b> нажми <span class="kbd">Win</span><span class="kbd">R</span>, введи <code>%appdata%\.minecraft\saves</code>, Enter.<br><b>Linux:</b> открой <code>~/.minecraft/saves</code>.</p>
+<p>Открой папку с названием своего мира, а в ней папку <b>datapacks</b>.</p>
+<p class="see">Ты должен увидеть: папку с именем datapacks (она может быть пустой — это нормально).</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Положи .zip внутрь</h3>
+<p>Перемести файл в <b>datapacks</b>. Так и оставь его запакованным.</p>
+<p class="see">Ты должен увидеть: .zip лежит внутри datapacks.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Включи пакет</h3>
+<p>Открой мир в игре. Нажми <span class="kbd">T</span> для чата и введи эти две строки одну за другой. В первой укажи имя своего файла:</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">Ты должен увидеть: «Enabled data pack …» после первой строки и короткую паузу после второй.</p>
+<div class="oops"><b>Пишет, что пакет «несовместим»?</b> Всё равно включи, он загрузится. Экспорты из Craft Block 2.6.0 и новее этого не показывают.</div>
+<div class="oops"><b>Команды не работают?</b> В этом мире выключены читы. Пауза → <b>Открыть для сети</b> → <b>Разрешить читы: ВКЛ</b> → Запустить мир в сети. В мирах Творческого режима читы уже включены.</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Выбери место</h3>
+<p>Дойди до ровной открытой площадки. Нажми <span class="kbd">F3</span> (Mac: <span class="kbd">fn</span><span class="kbd">F3</span>) и поворачивайся, пока строка <i>Facing</i> не покажет <b>east</b>. Постройка заполнит землю впереди и справа от тебя.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Введи команду</h3>
+<p>Нажми <span class="kbd">T</span> и введи команду из приложения (на телефоне кнопка «Копировать» рядом кладёт её в буфер обмена). В Java в ней <b>двоеточие</b>. Для постройки с названием My House:</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">Ты должен увидеть: свою постройку, точно как в приложении.</p>
+<div class="oops"><b>«Unknown function»</b> Шаг 4 пропущен или название не то: в Java двоеточие, а пробелы становятся подчёркиваниями — <i>My House</i> → <code>craft:my_house</code>.</div>
+</div></div>
+<figure><img src="../img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Команда и постройка в мире Java.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ COMMON ============================ -->
+<section id="spot"><div class="wrap">
+<h2>Где именно она появится?</h2>
+<div class="compass">
+<h3>У твоих ног, растёт на восток и на юг.</h3>
+<p>Повернись на восток (там восходит солнце), и постройка заполнит землю впереди и справа от тебя. Приложение говорит, какая она в ширину, глубину и высоту. Постройка ставится как есть: на холме часть окажется внутри холма; над озером внутрь зайдёт вода. Сначала ровная земля, потом команда.</p>
+</div>
+<details class="more"><summary>Хочу предпросмотр и точный контроль (структурный блок)</summary>
+<p>Встроенный структурный блок игры рисует контур постройки перед размещением и позволяет её сдвинуть и повернуть. Получи его командой <code>/give @s structure_block</code>, поставь, открой, выбери режим <b>Load</b>, введи название постройки в поле имени (<code>craft:my_house</code> в обоих изданиях), включи рамку, подбери смещения, чтобы контур встал на место, и нажми <b>Load</b>. Один блок вмещает до 48 блоков на сторону в Java и 64 в Bedrock; большие постройки приходят несколькими частями, и приложение показывает смещение каждой.</p>
+</details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Если что-то не так</h2>
+<div class="qa">
+<details><summary>Пропали дверь, факел или цветок</summary><p>Им нужна твёрдая земля под собой. Если постройка встала над ямой, впадиной или водой, игра сбрасывает их в момент загрузки. Поставь её на ровную землю или сначала засыпь землю.</p></details>
+<details><summary>Вода растекается повсюду</summary><p>В твоей постройке есть пруд или бассейн, и она встала над землёй, так что воде негде было держаться. Поставь её ниже, на землю, и вода останется в своей чаше.</p></details>
+<details><summary>Угловая ступенька получилась прямой</summary><p>Форму угла ступеньки игра определяет по соседям, точно как когда ставишь её вручную. Угловая ступенька без ступенек рядом — прямая; в готовой крыше она становится угловой.</p></details>
+<details><summary>Моих животных нет</summary><p>Животные в Craft Block — это декорации, а не блоки. У игры для них нет блока, поэтому они остаются в планировщике. Приложение говорит, сколько их, перед экспортом.</p></details>
+<details><summary>Я играю на Xbox, PlayStation или Switch</summary><p>Консоли не умеют открывать файлы, поэтому пакет туда напрямую не импортировать. Импортируй его на телефоне, планшете или ПК (шаг 1 выше), поставь постройку в мир, затем загрузи этот мир в Realm и присоединись к Realm с консоли. Без Realm постройка остаётся на том устройстве, где ты её импортировал.</p></details>
+<details><summary>Мир обязательно должен быть в Творческом режиме?</summary><p>Нет. Подходит любой режим, включая Выживание — команде нужны лишь включённые читы в этом мире, а читы стоят только достижений в нём. Творческий просто удобнее, чтобы рассмотреть постройку: можно летать, и никто не кусает.</p></details>
+<details><summary>Экспорт бесплатный?</summary><p>Первые три экспорта бесплатны. Дальше экспорт входит в Craft Block Premium. Всё на этой странице делает сама игра, и это ничего не стоит.</p></details>
+</div>
+</div></section>
+
+<footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">О приложении</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Не официальный продукт Minecraft. Не одобрено Mojang или Microsoft и не связано с ними.</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mettez votre construction Craft Block dans Minecraft — pas à pas</title>
+<meta name="description" content="Comment charger une construction exportée depuis Craft Block dans votre propre monde Minecraft : Bedrock (téléphone, tablette, console, Windows) et Java (PC, Mac). Une action par étape, sans mods.">
+<link rel="canonical" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
+<link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
+<link rel="alternate" hreflang="de" href="https://teamof3andd.com/craft/export/de/">
+<link rel="alternate" hreflang="es" href="https://teamof3andd.com/craft/export/es/">
+<link rel="alternate" hreflang="fr" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="it" href="https://teamof3andd.com/craft/export/it/">
+<link rel="alternate" hreflang="ja" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="ko" href="https://teamof3andd.com/craft/export/ko/">
+<link rel="alternate" hreflang="pl" href="https://teamof3andd.com/craft/export/pl/">
+<link rel="alternate" hreflang="pt" href="https://teamof3andd.com/craft/export/pt/">
+<link rel="alternate" hreflang="ru" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="tr" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="vi" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://teamof3andd.com/craft/export/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
+<link rel="icon" href="/assets/craft_icon.png">
+<meta property="og:title" content="Mettez votre construction Craft Block dans Minecraft"><meta property="og:description" content="Bedrock et Java, sans mods : exportez depuis l'app, une commande dans le jeu."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<style>
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
+.hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
+code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
+.langs{max-width:820px;margin:10px auto 0;padding:0 20px;font-size:13px;color:var(--grey);line-height:1.9}.langs a{color:var(--grey)}.langs b{color:var(--ink)}
+footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">Confidentialité</a></div></div></nav>
+<div class="langs"><a href="/craft/export/">English</a> · <a href="/craft/export/uk/">Українська</a> · <a href="/craft/export/de/">Deutsch</a> · <a href="/craft/export/es/">Español</a> · <b>Français</b> · <a href="/craft/export/it/">Italiano</a> · <a href="/craft/export/ja/">日本語</a> · <a href="/craft/export/ko/">한국어</a> · <a href="/craft/export/pl/">Polski</a> · <a href="/craft/export/pt/">Português</a> · <a href="/craft/export/ru/">Русский</a> · <a href="/craft/export/tr/">Türkçe</a> · <a href="/craft/export/vi/">Tiếng Việt</a> · <a href="/craft/export/zh/">简体中文</a> · <a href="/craft/export/zh-hant/">繁體中文</a></div>
+
+<header class="hero"><div class="wrap">
+<h1>Votre construction, dans votre propre monde</h1>
+<p>Six étapes. Une seule chose à faire dans chacune. À la fin vous tapez une commande et la construction apparaît devant vous. Sans mods.</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">Je joue sur téléphone, tablette, console ou Windows<small>C'est Minecraft <b>Bedrock</b>, celui de la boutique d'applications.</small></button>
+<button id="pickJ" onclick="pick('java')">Je joue sur PC ou Mac depuis le Launcher<small>C'est Minecraft <b>Java</b>.</small></button>
+</div>
+</div></header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about"><div class="wrap">
+<h2>Ce que fait l'export</h2>
+<p class="lead">Craft Block transforme la construction de votre écran en un fichier que le jeu comprend. Vous ouvrez ce fichier dans Minecraft, vous tapez une commande, et la même construction apparaît dans votre monde, bloc par bloc, à taille réelle.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Où est le bouton</h3>
+<p>Écran d'accueil → appui long sur une construction → <b>Exporter vers Minecraft</b>. N'importe laquelle marche : la vôtre ou un des exemples.</p>
+</div></div>
+<figure><img src="../img/b0.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Appui long sur une construction pour ouvrir ce menu.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Quelle édition ai-je ?</h3>
+<p><b>Bedrock</b> si vous avez installé Minecraft depuis l'App Store, Google Play ou le Microsoft Store, ou si vous jouez sur Xbox, PlayStation ou Switch. <b>Java</b> si vous le lancez depuis le <i>Minecraft Launcher</i> sur PC ou Mac. Pas sûr ? Sur l'écran titre, Bedrock affiche dans le coin une version du type <i>v1.21.x</i> ; Java affiche <i>Minecraft 1.21.x</i> et le Launcher.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Ce que vous obtenez</h3>
+<p><b>Bedrock :</b> un fichier se terminant par <code>.mcpack</code>. L'ouvrir met dans le jeu un pack au nom de votre construction. <b>Java :</b> un <code>.zip</code> se terminant par <code>_datapack.zip</code>, qui va dans le dossier de votre monde. Les deux sont minuscules et ne contiennent que vos blocs, rien d'autre.</p>
+<p>L'app affiche la taille avant l'export : combien de blocs, quelle largeur, profondeur et hauteur. Les grandes constructions sont découpées en plusieurs parties dans le même fichier ; la commande les place quand même toutes d'un coup.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Ce qui passe, et ce qui ne passe pas</h3>
+<p><b>Passe :</b> chaque bloc, y compris escaliers, dalles, portes, torches, verre, eau, plantes, avec l'orientation que vous leur avez donnée.</p>
+<p><b>Remplacé :</b> quelques blocs n'existent que dans Craft Block. L'app liste chacun d'eux et ce que le jeu reçoit à la place (par exemple un lotus devient une tulipe rose). Rien n'est supprimé en silence.</p>
+<p><b>Reste dans l'app :</b> les animaux et autres créatures (ce sont des décorations, le jeu n'a pas de bloc pour eux) et tout pack de textures importé : le jeu utilise ses propres textures.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Où elle atterrit</h3>
+<p>Là où vous êtes quand vous tapez la commande. La construction part de vos pieds et grandit vers l'est et le sud, alors tournez-vous d'abord vers l'est. Les détails et un moyen de voir l'emplacement exact à l'avance sont plus bas, dans <a href="#spot">Où apparaît-elle exactement ?</a></p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Combien de fois puis-je exporter ?</h3>
+<p>Trois fois gratuitement. Ensuite, l'export fait partie de Craft Block Premium. Le fichier lui-même n'expire jamais : une fois que vous l'avez, vous pouvez mettre la construction dans autant de mondes que vous voulez.</p>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock : téléphone, tablette, console, Windows</h2>
+<p class="lead">Chaque étape tient sur un écran. La ligne en dessous dit ce que vous devez voir quand ça a marché. Les images viennent d'une tablette Android et d'un iPhone ; sous Windows c'est pareil.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Exportez depuis Craft Block</h3>
+<p>Sur l'écran d'accueil, appui long sur votre construction → <b>Exporter vers Minecraft</b> → <b>Bedrock</b> → <b>Enregistrer .mcpack</b>.</p>
+<p>Puis faites entrer le fichier dans le jeu ; c'est la seule étape qui dépend de l'appareil :</p>
+<p><b>Téléphone ou tablette Android :</b> Minecraft s'ouvre tout seul et importe le pack.</p>
+<p><b>iPhone ou iPad :</b> une feuille de partage s'ouvre. Choisissez <b>Minecraft</b>. S'il n'est pas dans la liste, choisissez <b>Enregistrer dans Fichiers</b>, puis ouvrez l'app Fichiers et touchez le fichier.</p>
+<p><b>Windows 10/11 (Bedrock du Microsoft Store) :</b> envoyez le fichier au PC (mail, OneDrive, câble) et double-cliquez dessus. Minecraft démarre et l'importe.</p>
+<p><b>Xbox, PlayStation, Switch :</b> une console ne peut pas ouvrir de fichiers. Importez le pack sur un téléphone ou un PC, placez-y la construction dans un monde, puis amenez ce monde sur la console via un <b>Realm</b> (Jouer sur Realms → envoyer le monde ; la console le rejoint ensuite). Ou jouez simplement ce monde sur le téléphone.</p>
+<p class="see">Vous devez voir : Minecraft affiche <b>Importation réussie</b> en haut.</p>
+<div class="oops"><b>Rien ne s'est passé, ou le fichier s'est ouvert ailleurs ?</b> Envoyez-vous le fichier (Telegram, Drive, mail), ouvrez-le sur l'appareil, appui long → <i>Ouvrir avec</i> → Minecraft.</div>
+</div></div>
+<figure><img src="../img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>La fenêtre d'export dans Craft Block, avec la commande que vous taperez à l'étape 6 (Android).</figcaption></figure>
+<figure><img src="../img/i1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>La même fenêtre sur un iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Allez dans vos mondes</h3>
+<p>Dans Minecraft, appuyez sur <b>Jouer</b>. Vous êtes dans l'onglet <b>Mondes</b>.</p>
+<p>Nouveau monde : <b>Créer</b> → <b>Créer un nouveau monde</b>. Monde existant : touchez le <b>crayon</b> à côté de son nom, pas le nom lui-même.</p>
+<p class="see">Vous devez voir : les paramètres du monde, avec une liste de sections à gauche (Général, Jeu, Packs de ressources, Packs de comportement…).</p>
+</div></div>
+<figure><img src="../img/b2.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Le crayon ouvre les paramètres d'un monde existant.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Activez les triches</h3>
+<p>Liste de gauche → <b>Triches</b> → activez <b>Triches</b> (dans les anciennes versions, c'est sous <b>Jeu</b>, <i>Activer les triches</i>). Le jeu prévient que les succès seront désactivés dans ce monde : c'est normal, acceptez. Tant que vous y êtes, <b>Général</b> → Mode de jeu → <b>Créatif</b> facilite la construction.</p>
+<p class="see">Vous devez voir : l'interrupteur Triches en vert. (« Succès désactivés » seul ne suffit pas : un monde Créatif l'affiche aussi avec les triches encore éteintes.)</p>
+</div></div>
+<figure><img src="../img/b3.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Modifier le monde → Triches → l'interrupteur est activé.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Activez le pack pour ce monde</h3>
+<p>Liste de gauche → <b>Packs de comportement</b> → ouvrez <b>Mes packs</b> → touchez le pack au nom de votre construction → <b>Activer</b>.</p>
+<p>Si le jeu demande <i>Mettre à jour le monde ?</i>, choisissez <b>Ajouter le pack quand même</b> : il prévient seulement que le monde contiendra quelque chose qu'il n'a pas créé.</p>
+<p class="see">Vous devez voir : le pack est remonté dans <b>Actifs</b>.</p>
+<div class="oops"><b>Pas de bouton Activer ?</b> Vous êtes dans un monde en cours : cet écran ne fait que <i>montrer</i> les packs. Quittez le monde (pause → Sauvegarder et quitter) et revenez par le crayon, comme à l'étape 2.</div>
+</div></div>
+<figure><img src="../img/b4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Modifier le monde → Packs de comportement : la construction est dans Actifs (tablette Android).</figcaption></figure>
+<figure><img src="../img/i4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Le même écran sur un iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Entrez dans le monde et choisissez l'endroit</h3>
+<p>Appuyez sur <b>Créer</b> (nouveau monde) ou <b>Jouer</b> (existant). Marchez jusqu'à un terrain plat et dégagé. Tournez-vous pour que le soleil soit <b>devant vous</b> quand il se lève : c'est l'est. La construction remplira le sol devant vous et à votre droite.</p>
+<p class="see">Vous devez voir : un terrain plat devant vous, au moins aussi grand que la taille indiquée par l'app.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Tapez la commande</h3>
+<p>Touchez la <b>bulle</b> en haut de l'écran pour ouvrir le chat. L'app a mis la commande dans votre presse-papiers quand vous avez enregistré le fichier : <b>appui long sur le champ de chat → Coller</b>. Ou tapez-la : ce sont <b>deux mots avec un espace</b>, le mot <code>function</code>, puis le nom de votre construction. Pour une construction nommée My House :</p>
+<span class="cmd">/function craft_my_house</span>
+<p>Envoyez. La construction apparaît aussitôt.</p>
+<p class="see">Vous devez voir : votre construction, exactement comme dans l'app.</p>
+<div class="oops"><b>« Incorrect permission level for command: function »</b> Les triches sont activées mais votre joueur n'est pas encore opérateur. Pause → <b>Social</b> (en haut à droite) → touchez votre propre nom → <b>Opérateur</b>. Retapez la commande.</div>
+<div class="oops"><b>« Unknown command: craft_my_house »</b> Le mot <code>function</code> a sauté, c'est facile sur un clavier tactile. Deux mots : <code>/function craft_my_house</code>.</div>
+<div class="oops"><b>« Cheats aren't enabled in this world »</b> L'étape 3 n'est pas faite : pause → Paramètres → <b>Triches</b> dans la liste de gauche → activez. Le mode Créatif seul n'active pas les triches.</div>
+<div class="oops"><b>Votre texte apparaît comme un message de chat</b> La barre oblique du début a sauté. Les commandes commencent par <code>/</code> ; sur le clavier iPhone elle est sous <b>123</b>.</div>
+<div class="oops"><b>« Unknown function »</b> L'étape 4 n'est pas faite pour ce monde, ou vous êtes dans un autre monde. Les espaces du nom deviennent des tirets bas : <i>My House</i> → <code>craft_my_house</code>.</div>
+</div></div>
+<figure><img src="../img/b6.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chat : le mot function, un espace, le nom de la construction.</figcaption></figure>
+<figure><img src="../img/b7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Et la voilà : Modern House de l'app, dans un monde Bedrock sur la tablette.</figcaption></figure>
+<figure><img src="../img/i7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>La même construction placée depuis un iPhone.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java : PC et Mac</h2>
+<p class="lead">Java lit la construction depuis un petit fichier <code>.zip</code> que vous déposez dans le dossier de votre monde. Rien à installer.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Exportez depuis Craft Block</h3>
+<p>Sur l'écran d'accueil, appui long sur votre construction → <b>Exporter vers Minecraft</b> → <b>Java</b> → <b>Enregistrer .zip</b>. Envoyez le fichier sur votre ordinateur comme vous voulez : AirDrop, mail, Telegram, câble. <b>Ne le décompressez pas.</b></p>
+<p class="see">Vous devez voir : un fichier nommé <code>my_house_datapack.zip</code> sur l'ordinateur.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Ouvrez le dossier de votre monde</h3>
+<p><b>Mac :</b> dans le Finder, appuyez sur <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, collez <code>~/Library/Application Support/minecraft/saves</code>, Entrée.<br><b>Windows :</b> appuyez sur <span class="kbd">Win</span><span class="kbd">R</span>, tapez <code>%appdata%\.minecraft\saves</code>, Entrée.<br><b>Linux :</b> ouvrez <code>~/.minecraft/saves</code>.</p>
+<p>Ouvrez le dossier au nom de votre monde, puis le dossier <b>datapacks</b> à l'intérieur.</p>
+<p class="see">Vous devez voir : un dossier nommé datapacks (il peut être vide, c'est normal).</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Déposez le .zip dedans</h3>
+<p>Déplacez le fichier dans <b>datapacks</b>. Toujours zippé.</p>
+<p class="see">Vous devez voir : le .zip dans datapacks.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Activez le pack</h3>
+<p>Ouvrez le monde dans le jeu. Appuyez sur <span class="kbd">T</span> pour le chat et tapez ces deux lignes l'une après l'autre. Mettez le nom de votre fichier dans la première :</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">Vous devez voir : « Enabled data pack … » après la première ligne, et une courte pause après la seconde.</p>
+<div class="oops"><b>Le pack serait « incompatible » ?</b> Activez-le quand même, il se charge. Les exports de Craft Block 2.6.0 et plus ne l'affichent plus.</div>
+<div class="oops"><b>Les commandes ne marchent pas ?</b> Les triches sont éteintes pour ce monde. Pause → <b>Ouvrir au LAN</b> → <b>Autoriser les triches : OUI</b> → Démarrer le monde en LAN. Les mondes Créatifs ont déjà les triches activées.</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Choisissez l'endroit</h3>
+<p>Marchez jusqu'à un terrain plat et dégagé. Appuyez sur <span class="kbd">F3</span> (Mac : <span class="kbd">fn</span><span class="kbd">F3</span>) et tournez jusqu'à ce que la ligne <i>Facing</i> indique <b>east</b>. La construction remplira le sol devant vous et à votre droite.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Tapez la commande</h3>
+<p>Appuyez sur <span class="kbd">T</span> et tapez la commande de l'app (sur le téléphone, le bouton Copier à côté la met dans le presse-papiers). En Java elle contient un <b>deux-points</b>. Pour une construction nommée My House :</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">Vous devez voir : votre construction, exactement comme dans l'app.</p>
+<div class="oops"><b>« Unknown function »</b> L'étape 4 a été sautée, ou le nom ne va pas : Java utilise deux-points et les espaces deviennent des tirets bas : <i>My House</i> → <code>craft:my_house</code>.</div>
+</div></div>
+<figure><img src="../img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>La commande et la construction dans un monde Java.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ COMMON ============================ -->
+<section id="spot"><div class="wrap">
+<h2>Où apparaît-elle exactement ?</h2>
+<div class="compass">
+<h3>À vos pieds, en grandissant vers l'est et le sud.</h3>
+<p>Tournez-vous vers l'est (le soleil s'y lève) et la construction remplit le sol devant vous et à votre droite. L'app vous dit sa largeur, sa profondeur et sa hauteur. Elle est placée telle quelle : sur une colline, une partie finit dans la colline ; sur un lac, l'eau entre. D'abord un sol plat, ensuite la commande.</p>
+</div>
+<details class="more"><summary>Je veux un aperçu et un contrôle exact (bloc de structure)</summary>
+<p>Le bloc de structure du jeu dessine le contour de la construction avant de la placer et vous laisse la décaler et la tourner. Obtenez-en un avec <code>/give @s structure_block</code>, placez-le, ouvrez-le, mettez le mode sur <b>Charger</b>, tapez le nom de votre construction dans le champ du nom (<code>craft:my_house</code> dans les deux éditions), activez la boîte englobante, ajustez les décalages jusqu'à ce que le contour soit bien placé, puis <b>Charger</b>. Un bloc contient jusqu'à 48 blocs par côté en Java et 64 en Bedrock ; les grandes constructions arrivent en plusieurs parties et l'app indique le décalage de chacune.</p>
+</details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Si quelque chose cloche</h2>
+<div class="qa">
+<details><summary>Une porte, une torche ou une fleur manque</summary><p>Il leur faut un sol solide dessous. Si la construction a atterri sur un creux, un trou ou de l'eau, le jeu les fait tomber dès le chargement. Placez-la sur un sol plat, ou comblez le sol d'abord.</p></details>
+<details><summary>L'eau coule partout</summary><p>Votre construction a un étang ou une piscine et a été placée au-dessus du sol, donc l'eau n'avait nulle part où tenir. Placez-la plus bas, sur le sol, et l'eau reste dans son bassin.</p></details>
+<details><summary>Un escalier d'angle est sorti droit</summary><p>Le jeu décide de la forme d'angle d'un escalier d'après ses voisins, exactement comme quand vous en posez un à la main. Un escalier d'angle sans escalier à côté est droit ; dans un toit fini, c'est un angle.</p></details>
+<details><summary>Mes animaux ne sont pas là</summary><p>Dans Craft Block, les animaux sont des décorations, pas des blocs. Le jeu n'a pas de bloc pour eux, ils restent donc dans le planificateur. L'app vous dit combien il y en a avant l'export.</p></details>
+<details><summary>Je joue sur Xbox, PlayStation ou Switch</summary><p>Les consoles ne peuvent pas ouvrir de fichiers, le pack ne peut donc pas y être importé directement. Importez-le sur un téléphone, une tablette ou un PC (étape 1 ci-dessus), placez la construction dans un monde, puis envoyez ce monde sur un Realm et rejoignez le Realm depuis la console. Sans Realm, la construction reste sur l'appareil où vous l'avez importée.</p></details>
+<details><summary>Faut-il un monde Créatif ?</summary><p>Non. Tout mode de jeu convient, Survie comprise : la commande a seulement besoin que les triches soient activées pour ce monde, et les triches ne vous coûtent que les succès de ce monde. Le Créatif est juste plus pratique pour examiner la construction : on peut voler, et rien ne mord.</p></details>
+<details><summary>L'export est-il gratuit ?</summary><p>Les trois premiers exports sont gratuits. Ensuite, l'export fait partie de Craft Block Premium. Tout ce qui est sur cette page est fait par le jeu lui-même et ne coûte rien.</p></details>
+</div>
+</div></section>
+
+<footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">À propos de l'app</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Pas un produit Minecraft officiel. Ni approuvé par Mojang ou Microsoft, ni associé à eux.</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Đưa công trình Craft Block vào Minecraft — hướng dẫn từng bước</title>
+<meta name="description" content="Cách tải một công trình xuất từ Craft Block vào thế giới Minecraft của bạn: Bedrock (điện thoại, máy tính bảng, console, Windows) và Java (PC, Mac). Mỗi bước một thao tác, không cần mod.">
+<link rel="canonical" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
+<link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
+<link rel="alternate" hreflang="de" href="https://teamof3andd.com/craft/export/de/">
+<link rel="alternate" hreflang="es" href="https://teamof3andd.com/craft/export/es/">
+<link rel="alternate" hreflang="fr" href="https://teamof3andd.com/craft/export/fr/">
+<link rel="alternate" hreflang="it" href="https://teamof3andd.com/craft/export/it/">
+<link rel="alternate" hreflang="ja" href="https://teamof3andd.com/craft/export/ja/">
+<link rel="alternate" hreflang="ko" href="https://teamof3andd.com/craft/export/ko/">
+<link rel="alternate" hreflang="pl" href="https://teamof3andd.com/craft/export/pl/">
+<link rel="alternate" hreflang="pt" href="https://teamof3andd.com/craft/export/pt/">
+<link rel="alternate" hreflang="ru" href="https://teamof3andd.com/craft/export/ru/">
+<link rel="alternate" hreflang="tr" href="https://teamof3andd.com/craft/export/tr/">
+<link rel="alternate" hreflang="vi" href="https://teamof3andd.com/craft/export/vi/">
+<link rel="alternate" hreflang="zh-Hans" href="https://teamof3andd.com/craft/export/zh/">
+<link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
+<link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
+<link rel="icon" href="/assets/craft_icon.png">
+<meta property="og:title" content="Đưa công trình Craft Block vào Minecraft"><meta property="og:description" content="Bedrock và Java, không cần mod: xuất từ ứng dụng, một lệnh trong game."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<style>
+:root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
+*{margin:0;padding:0;box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{font-family:-apple-system,BlinkMacSystemFont,"SF Pro Display","Segoe UI",Roboto,sans-serif;color:var(--ink);background:var(--bg);line-height:1.55;-webkit-font-smoothing:antialiased}
+a{color:var(--accent);text-decoration:none}
+.wrap{max-width:820px;margin:0 auto;padding:0 20px}
+nav{position:sticky;top:0;z-index:5;background:rgba(255,255,255,.88);backdrop-filter:saturate(180%) blur(14px);border-bottom:1px solid var(--line)}
+nav .wrap{display:flex;align-items:center;justify-content:space-between;height:56px}
+nav .brand{font-weight:800;color:var(--ink)}
+nav .links a{color:var(--grey);font-weight:600;font-size:14px;margin-left:18px}
+.hero{background:linear-gradient(150deg,var(--accent) 0%,var(--accent2) 100%);color:#fff}
+.hero .wrap{padding:44px 20px 36px}
+.hero h1{font-size:clamp(28px,4.6vw,44px);font-weight:800;letter-spacing:-.8px;line-height:1.08}
+.hero p{margin-top:12px;font-size:17px;max-width:600px;opacity:.95}
+.pick{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-top:24px}
+.pick button{background:rgba(255,255,255,.14);border:2px solid rgba(255,255,255,.45);color:#fff;font:inherit;font-weight:700;padding:16px 14px;border-radius:14px;text-align:left;cursor:pointer;line-height:1.3}
+.pick button small{display:block;font-weight:500;opacity:.9;font-size:13px;margin-top:4px}
+.pick button.on{background:#fff;color:var(--accent);border-color:#fff}
+@media (max-width:540px){.pick{grid-template-columns:1fr}}
+section{padding:40px 0;border-bottom:1px solid var(--line)}
+section h2{font-size:clamp(22px,3.2vw,30px);font-weight:800;letter-spacing:-.5px}
+section .lead{color:var(--grey);margin-top:8px;font-size:16px;max-width:640px}
+.path{display:none}.path.on{display:block}
+.steps{display:grid;gap:14px;margin-top:22px}
+.step{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:18px 18px 16px}
+.step .top{display:grid;grid-template-columns:40px 1fr;gap:12px;align-items:start}
+.step .n{width:34px;height:34px;border-radius:50%;background:var(--accent);color:#fff;font-weight:800;display:grid;place-items:center;font-size:16px}
+.step h3{font-size:18px;line-height:1.25}
+.step p{color:var(--grey);margin-top:6px;font-size:15px}
+.step .see{margin-top:8px;font-size:14px;color:var(--ink)}
+.step .see b{color:var(--accent)}
+.step .oops{margin-top:12px;background:var(--warn);border:1px solid var(--warnline);border-radius:10px;padding:10px 12px;font-size:14px;color:#5a4000}
+.step .oops b{display:block;color:#5a4000}
+figure{margin:14px 0 2px;border-radius:12px;overflow:hidden;border:1px solid var(--line);background:#111}
+figure img{display:block;width:100%;height:auto}
+figcaption{font-size:13px;color:var(--grey);padding:8px 10px;background:var(--card)}
+code,.cmd{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace}
+code{background:var(--code);padding:2px 6px;border-radius:6px;font-size:14px;white-space:nowrap}
+.cmd{display:block;background:var(--dark);color:#e8f5e9;padding:12px 14px;border-radius:10px;margin-top:10px;font-size:16px;overflow-x:auto;white-space:nowrap;user-select:all}
+.kbd{display:inline-block;border:1px solid #c9d2d8;border-bottom-width:2px;border-radius:6px;padding:0 6px;font-size:13px;background:#fff}
+.compass{background:var(--dark);color:#fff;border-radius:20px;padding:22px 24px;margin-top:22px}
+.compass h3{font-size:19px}.compass p{opacity:.9;margin-top:8px}
+.qa{margin-top:22px;display:grid;gap:10px}
+.qa details,details.more{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px 18px}
+details.more{margin-top:18px}
+summary{font-weight:700;cursor:pointer;list-style:none}
+summary::-webkit-details-marker{display:none}
+.qa p,details.more p{color:var(--grey);margin-top:8px;font-size:15px}
+.langs{max-width:820px;margin:10px auto 0;padding:0 20px;font-size:13px;color:var(--grey);line-height:1.9}.langs a{color:var(--grey)}.langs b{color:var(--ink)}
+footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
+</style>
+</head>
+<body>
+<nav><div class="wrap"><a class="brand" href="/">Team of 3&amp;D</a><div class="links"><a href="/craft/">Craft Block</a><a href="/craft/privacy-policy/">Quyền riêng tư</a></div></div></nav>
+<div class="langs"><a href="/craft/export/">English</a> · <a href="/craft/export/uk/">Українська</a> · <a href="/craft/export/de/">Deutsch</a> · <a href="/craft/export/es/">Español</a> · <a href="/craft/export/fr/">Français</a> · <a href="/craft/export/it/">Italiano</a> · <a href="/craft/export/ja/">日本語</a> · <a href="/craft/export/ko/">한국어</a> · <a href="/craft/export/pl/">Polski</a> · <a href="/craft/export/pt/">Português</a> · <a href="/craft/export/ru/">Русский</a> · <a href="/craft/export/tr/">Türkçe</a> · <b>Tiếng Việt</b> · <a href="/craft/export/zh/">简体中文</a> · <a href="/craft/export/zh-hant/">繁體中文</a></div>
+
+<header class="hero"><div class="wrap">
+<h1>Công trình của bạn, trong thế giới của bạn</h1>
+<p>Sáu bước. Mỗi bước chỉ một việc. Cuối cùng bạn gõ một lệnh và công trình hiện ra trước mặt. Không cần mod.</p>
+<div class="pick">
+<button id="pickB" onclick="pick('bedrock')">Tôi chơi trên điện thoại, máy tính bảng, console hoặc Windows<small>Đó là Minecraft <b>Bedrock</b>, bản trên cửa hàng ứng dụng.</small></button>
+<button id="pickJ" onclick="pick('java')">Tôi chơi trên PC hoặc Mac qua Launcher<small>Đó là Minecraft <b>Java</b>.</small></button>
+</div>
+</div></header>
+
+<!-- ============================ ABOUT ============================ -->
+<section id="about"><div class="wrap">
+<h2>Xuất làm được gì</h2>
+<p class="lead">Craft Block biến công trình trên màn hình của bạn thành một tệp mà game hiểu được. Bạn mở tệp đó trong Minecraft, gõ một lệnh, và công trình y hệt xuất hiện trong thế giới của bạn, từng khối một, đúng kích thước thật.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Nút nằm ở đâu</h3>
+<p>Màn hình chính → nhấn giữ một công trình → <b>Xuất sang Minecraft</b>. Công trình nào cũng được: của bạn hoặc một trong các ví dụ.</p>
+</div></div>
+<figure><img src="../img/b0.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Nhấn giữ một công trình để mở menu này.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Tôi chơi phiên bản nào?</h3>
+<p><b>Bedrock</b> nếu bạn cài Minecraft từ App Store, Google Play, Microsoft Store, hoặc chơi trên Xbox, PlayStation, Switch. <b>Java</b> nếu bạn khởi chạy từ <i>Minecraft Launcher</i> trên PC hoặc Mac. Không chắc? Trên màn hình tiêu đề, Bedrock hiện số phiên bản kiểu <i>v1.21.x</i> ở góc; Java hiện <i>Minecraft 1.21.x</i> và Launcher.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Bạn nhận được gì</h3>
+<p><b>Bedrock:</b> một tệp đuôi <code>.mcpack</code>. Mở nó sẽ đưa vào game một gói mang tên công trình của bạn. <b>Java:</b> một tệp <code>.zip</code> đuôi <code>_datapack.zip</code>, đặt vào thư mục thế giới. Cả hai đều rất nhỏ và chỉ chứa các khối của bạn, không gì khác.</p>
+<p>Ứng dụng hiện kích thước trước khi xuất: bao nhiêu khối, rộng, sâu và cao bao nhiêu. Công trình lớn được chia thành nhiều phần trong cùng một tệp; lệnh vẫn đặt tất cả cùng lúc.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Cái gì được chuyển sang, cái gì không</h3>
+<p><b>Được chuyển sang:</b> mọi khối, kể cả cầu thang, phiến, cửa, đuốc, kính, nước, cây cối, với đúng hướng bạn đã đặt.</p>
+<p><b>Bị thay thế:</b> một vài khối chỉ có trong Craft Block. Ứng dụng liệt kê từng khối và thứ game nhận thay vào (ví dụ hoa sen thành hoa tulip hồng). Không có gì bị bỏ đi âm thầm.</p>
+<p><b>Ở lại trong ứng dụng:</b> động vật và các sinh vật khác (chúng là trang trí, game không có khối cho chúng), và mọi gói texture bạn đã nhập: game dùng texture của riêng nó.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Nó đặt ở đâu</h3>
+<p>Ở nơi bạn đứng khi gõ lệnh. Công trình bắt đầu từ chân bạn và mở rộng về hướng đông và nam, nên hãy quay mặt về hướng đông trước. Chi tiết và cách xem trước vị trí chính xác ở bên dưới, trong <a href="#spot">Chính xác thì nó xuất hiện ở đâu?</a></p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">?</div><div>
+<h3>Tôi có thể xuất bao nhiêu lần?</h3>
+<p>Ba lần miễn phí. Sau đó, xuất là một phần của Craft Block Premium. Tệp thì không bao giờ hết hạn: có nó rồi, bạn có thể đưa công trình vào bao nhiêu thế giới tùy thích.</p>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ BEDROCK ============================ -->
+<section id="bedrock" class="path"><div class="wrap">
+<h2>Bedrock: điện thoại, máy tính bảng, console, Windows</h2>
+<p class="lead">Mỗi bước là một màn hình. Dòng bên dưới cho biết bạn sẽ thấy gì khi thành công. Hình ảnh chụp từ máy tính bảng Android và iPhone; trên Windows trông y hệt.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Xuất từ Craft Block</h3>
+<p>Trên màn hình chính nhấn giữ công trình → <b>Xuất sang Minecraft</b> → <b>Bedrock</b> → <b>Lưu .mcpack</b>.</p>
+<p>Sau đó đưa tệp vào game; đây là bước duy nhất khác nhau tùy thiết bị:</p>
+<p><b>Điện thoại hoặc máy tính bảng Android:</b> Minecraft tự mở và nhập gói.</p>
+<p><b>iPhone hoặc iPad:</b> bảng chia sẻ hiện ra. Chọn <b>Minecraft</b>. Nếu không có trong danh sách, chọn <b>Lưu vào Tệp</b>, rồi mở ứng dụng Tệp và chạm vào tệp.</p>
+<p><b>Windows 10/11 (Bedrock từ Microsoft Store):</b> gửi tệp sang PC (email, OneDrive, cáp) và nhấp đúp. Minecraft khởi động và nhập nó.</p>
+<p><b>Xbox, PlayStation, Switch:</b> console không mở được tệp. Nhập gói trên điện thoại hoặc PC, đặt công trình vào một thế giới ở đó, rồi đưa thế giới đó lên console qua <b>Realm</b> (Chơi trên Realms → tải thế giới lên; console sau đó tham gia). Hoặc đơn giản là chơi thế giới đó trên điện thoại.</p>
+<p class="see">Bạn sẽ thấy: Minecraft hiện <b>Nhập thành công</b> ở trên cùng.</p>
+<div class="oops"><b>Không có gì xảy ra, hoặc tệp mở ở chỗ khác?</b> Gửi tệp cho chính bạn (Telegram, Drive, email), mở trên thiết bị, nhấn giữ → <i>Mở bằng</i> → Minecraft.</div>
+</div></div>
+<figure><img src="../img/b1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Hộp thoại xuất trong Craft Block, với lệnh bạn sẽ gõ ở bước 6 (Android).</figcaption></figure>
+<figure><img src="../img/i1.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Hộp thoại tương tự trên iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Vào danh sách thế giới</h3>
+<p>Trong Minecraft nhấn <b>Chơi</b>. Bạn đang ở thẻ <b>Thế giới</b>.</p>
+<p>Thế giới mới: <b>Tạo mới</b> → <b>Tạo thế giới mới</b>. Thế giới có sẵn: chạm vào <b>cây bút chì</b> cạnh tên, không phải tên.</p>
+<p class="see">Bạn sẽ thấy: phần cài đặt thế giới, với danh sách mục ở bên trái (Chung, Trò chơi, Gói tài nguyên, Gói hành vi…).</p>
+</div></div>
+<figure><img src="../img/b2.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Cây bút chì mở phần cài đặt của một thế giới có sẵn.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Bật cheat</h3>
+<p>Danh sách bên trái → <b>Cheat</b> → bật <b>Cheat</b> (ở các bản cũ nó nằm trong <b>Trò chơi</b> với tên <i>Kích hoạt cheat</i>). Game cảnh báo thành tựu sẽ bị tắt trong thế giới này; không sao, đồng ý đi. Nhân tiện, <b>Chung</b> → Chế độ chơi → <b>Sáng tạo</b> sẽ xây dễ hơn.</p>
+<p class="see">Bạn sẽ thấy: công tắc Cheat màu xanh lá. (Chỉ dòng “Thành tựu bị tắt” thì chưa đủ: thế giới Sáng tạo cũng hiện thế dù cheat vẫn tắt.)</p>
+</div></div>
+<figure><img src="../img/b3.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chỉnh sửa thế giới → Cheat → công tắc đang bật.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Bật gói cho thế giới này</h3>
+<p>Danh sách bên trái → <b>Gói hành vi</b> → mở <b>Gói của tôi</b> → chạm vào gói mang tên công trình → <b>Kích hoạt</b>.</p>
+<p>Nếu game hỏi <i>Cập nhật thế giới?</i>, chọn <b>Vẫn thêm gói</b>; nó chỉ cảnh báo thế giới sẽ chứa thứ không do game tạo ra.</p>
+<p class="see">Bạn sẽ thấy: gói đã chuyển lên mục <b>Đang bật</b>.</p>
+<div class="oops"><b>Không có nút Kích hoạt?</b> Bạn đang ở trong một thế giới đang chạy: màn hình đó chỉ <i>hiển thị</i> các gói. Thoát thế giới (tạm dừng → Lưu và thoát) rồi quay lại qua cây bút chì như ở bước 2.</div>
+</div></div>
+<figure><img src="../img/b4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chỉnh sửa thế giới → Gói hành vi: công trình nằm trong Đang bật (máy tính bảng Android).</figcaption></figure>
+<figure><img src="../img/i4.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Màn hình tương tự trên iPhone.</figcaption></figure>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Vào thế giới và chọn chỗ</h3>
+<p>Nhấn <b>Tạo</b> (thế giới mới) hoặc <b>Chơi</b> (có sẵn). Đi tới một khoảng đất phẳng, trống. Xoay người sao cho mặt trời ở <b>trước mặt bạn</b> khi mọc: đó là hướng đông. Công trình sẽ lấp đầy mặt đất trước mặt và bên phải bạn.</p>
+<p class="see">Bạn sẽ thấy: một khoảng đất phẳng phía trước, ít nhất bằng kích thước ứng dụng đã hiện.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Gõ lệnh</h3>
+<p>Chạm vào <b>bong bóng chat</b> ở đầu màn hình để mở chat. Ứng dụng đã đưa lệnh vào bộ nhớ tạm khi bạn lưu tệp: <b>nhấn giữ ô chat → Dán</b>. Hoặc gõ: <b>hai từ cách nhau bằng khoảng trắng</b>, từ <code>function</code>, rồi tên công trình. Với công trình tên My House:</p>
+<span class="cmd">/function craft_my_house</span>
+<p>Nhấn gửi. Công trình xuất hiện ngay.</p>
+<p class="see">Bạn sẽ thấy: công trình của bạn, y hệt trong ứng dụng.</p>
+<div class="oops"><b>“Incorrect permission level for command: function”</b> Cheat đã bật nhưng người chơi của bạn chưa phải là operator. Tạm dừng → <b>Xã hội</b> (góc trên bên phải) → chạm vào tên của bạn → <b>Operator</b>. Gõ lại lệnh.</div>
+<div class="oops"><b>“Unknown command: craft_my_house”</b> Thiếu từ <code>function</code>, rất dễ mất trên bàn phím cảm ứng. Hai từ: <code>/function craft_my_house</code>.</div>
+<div class="oops"><b>“Cheats aren't enabled in this world”</b> Chưa làm bước 3: tạm dừng → Cài đặt → <b>Cheat</b> trong danh sách bên trái → bật. Chỉ chế độ Sáng tạo thôi không bật cheat.</div>
+<div class="oops"><b>Văn bản của bạn hiện ra như tin nhắn chat</b> Thiếu dấu gạch chéo ở đầu. Lệnh bắt đầu bằng <code>/</code>; trên bàn phím iPhone nó nằm trong <b>123</b>.</div>
+<div class="oops"><b>“Unknown function”</b> Chưa làm bước 4 cho thế giới này, hoặc bạn đang ở thế giới khác. Khoảng trắng trong tên công trình thành dấu gạch dưới: <i>My House</i> → <code>craft_my_house</code>.</div>
+</div></div>
+<figure><img src="../img/b6.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Chat: từ function, một khoảng trắng, tên công trình.</figcaption></figure>
+<figure><img src="../img/b7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Và đây rồi: Modern House từ ứng dụng, trong một thế giới Bedrock trên máy tính bảng.</figcaption></figure>
+<figure><img src="../img/i7.jpg" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Công trình tương tự đặt từ iPhone.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================= JAVA ============================= -->
+<section id="java" class="path"><div class="wrap">
+<h2>Java: PC và Mac</h2>
+<p class="lead">Java đọc công trình từ một tệp <code>.zip</code> nhỏ mà bạn thả vào thư mục thế giới. Không phải cài gì cả.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Xuất từ Craft Block</h3>
+<p>Trên màn hình chính nhấn giữ công trình → <b>Xuất sang Minecraft</b> → <b>Java</b> → <b>Lưu .zip</b>. Gửi tệp sang máy tính bằng cách nào tùy bạn: AirDrop, email, Telegram, cáp. <b>Đừng giải nén.</b></p>
+<p class="see">Bạn sẽ thấy: một tệp tên <code>my_house_datapack.zip</code> trên máy tính.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Mở thư mục thế giới của bạn</h3>
+<p><b>Mac:</b> trong Finder nhấn <span class="kbd">⌘</span><span class="kbd">⇧</span><span class="kbd">G</span>, dán <code>~/Library/Application Support/minecraft/saves</code>, Enter.<br><b>Windows:</b> nhấn <span class="kbd">Win</span><span class="kbd">R</span>, gõ <code>%appdata%\.minecraft\saves</code>, Enter.<br><b>Linux:</b> mở <code>~/.minecraft/saves</code>.</p>
+<p>Mở thư mục mang tên thế giới của bạn, rồi thư mục <b>datapacks</b> bên trong.</p>
+<p class="see">Bạn sẽ thấy: một thư mục tên datapacks (có thể trống, đó là bình thường).</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Thả tệp .zip vào</h3>
+<p>Chuyển tệp vào <b>datapacks</b>. Vẫn để nén.</p>
+<p class="see">Bạn sẽ thấy: tệp .zip nằm trong datapacks.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Bật gói</h3>
+<p>Mở thế giới trong game. Nhấn <span class="kbd">T</span> để mở chat và gõ hai dòng này, lần lượt. Dùng tên tệp của bạn ở dòng đầu:</p>
+<span class="cmd">/datapack enable "file/my_house_datapack.zip"</span>
+<span class="cmd">/reload</span>
+<p class="see">Bạn sẽ thấy: “Enabled data pack …” sau dòng đầu, và một khoảng dừng ngắn sau dòng thứ hai.</p>
+<div class="oops"><b>Báo gói “không tương thích”?</b> Cứ bật, nó vẫn tải được. Các bản xuất từ Craft Block 2.6.0 trở lên không hiện cảnh báo này.</div>
+<div class="oops"><b>Lệnh không chạy?</b> Thế giới này đang tắt cheat. Tạm dừng → <b>Mở cho LAN</b> → <b>Cho phép cheat: BẬT</b> → Bắt đầu thế giới LAN. Thế giới Sáng tạo đã bật cheat sẵn.</div>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">5</div><div>
+<h3>Chọn chỗ</h3>
+<p>Đi tới một khoảng đất phẳng, trống. Nhấn <span class="kbd">F3</span> (Mac: <span class="kbd">fn</span><span class="kbd">F3</span>) và xoay cho tới khi dòng <i>Facing</i> hiện <b>east</b>. Công trình sẽ lấp đầy mặt đất trước mặt và bên phải bạn.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">6</div><div>
+<h3>Gõ lệnh</h3>
+<p>Nhấn <span class="kbd">T</span> và gõ lệnh từ ứng dụng (trên điện thoại, nút Sao chép bên cạnh sẽ đưa nó vào bộ nhớ tạm). Trong Java nó có <b>dấu hai chấm</b>. Với công trình tên My House:</p>
+<span class="cmd">/function craft:my_house</span>
+<p class="see">Bạn sẽ thấy: công trình của bạn, y hệt trong ứng dụng.</p>
+<div class="oops"><b>“Unknown function”</b> Bỏ qua bước 4, hoặc tên bị sai: Java dùng dấu hai chấm và khoảng trắng thành dấu gạch dưới: <i>My House</i> → <code>craft:my_house</code>.</div>
+</div></div>
+<figure><img src="../img/j6.png" alt="" loading="lazy" onerror="this.closest('figure').remove()"><figcaption>Lệnh và công trình trong một thế giới Java.</figcaption></figure>
+</div>
+
+</div>
+</div></section>
+
+<!-- ============================ COMMON ============================ -->
+<section id="spot"><div class="wrap">
+<h2>Chính xác thì nó xuất hiện ở đâu?</h2>
+<div class="compass">
+<h3>Ngay dưới chân bạn, mở rộng về hướng đông và nam.</h3>
+<p>Quay mặt về hướng đông (nơi mặt trời mọc) và công trình lấp đầy mặt đất trước mặt và bên phải bạn. Ứng dụng cho biết nó rộng, sâu và cao bao nhiêu. Công trình được đặt nguyên trạng: trên một ngọn đồi, một phần sẽ chìm trong đồi; trên hồ, nước sẽ tràn vào. Đất phẳng trước, lệnh sau.</p>
+</div>
+<details class="more"><summary>Tôi muốn xem trước và điều khiển chính xác (khối cấu trúc)</summary>
+<p>Khối cấu trúc của chính game vẽ đường viền công trình trước khi đặt và cho bạn dịch chuyển, xoay nó. Lấy một khối bằng <code>/give @s structure_block</code>, đặt xuống, mở ra, chọn chế độ <b>Tải</b>, gõ tên công trình vào ô tên (<code>craft:my_house</code> ở cả hai phiên bản), bật khung giới hạn, chỉnh độ lệch tới khi đường viền đúng chỗ, rồi <b>Tải</b>. Một khối chứa tối đa 48 khối mỗi cạnh trong Java và 64 trong Bedrock; công trình lớn hơn sẽ có nhiều phần và ứng dụng liệt kê độ lệch của từng phần.</p>
+</details>
+</div></section>
+
+<section id="faq"><div class="wrap">
+<h2>Nếu có gì đó không ổn</h2>
+<div class="qa">
+<details><summary>Thiếu cửa, đuốc hoặc hoa</summary><p>Chúng cần mặt đất đặc bên dưới. Nếu công trình rơi vào chỗ trũng, hố hoặc nước, game sẽ làm chúng rơi ngay khi tải. Đặt lên đất phẳng, hoặc lấp đất trước.</p></details>
+<details><summary>Nước chảy khắp nơi</summary><p>Công trình của bạn có ao hoặc bể bơi và được đặt cao hơn mặt đất, nên nước không có chỗ đọng. Đặt thấp xuống, sát mặt đất, nước sẽ nằm yên trong bể.</p></details>
+<details><summary>Cầu thang góc bị thẳng</summary><p>Game quyết định hình dạng góc của cầu thang dựa vào các khối lân cận, y như khi bạn đặt bằng tay. Cầu thang góc không có cầu thang kề bên thì thẳng; trong mái nhà hoàn chỉnh thì nó là góc.</p></details>
+<details><summary>Không thấy động vật của tôi</summary><p>Động vật trong Craft Block là trang trí, không phải khối. Game không có khối cho chúng nên chúng ở lại trong trình lập kế hoạch. Ứng dụng cho biết có bao nhiêu con trước khi xuất.</p></details>
+<details><summary>Tôi chơi trên Xbox, PlayStation hoặc Switch</summary><p>Console không mở được tệp, nên không nhập gói trực tiếp ở đó được. Nhập trên điện thoại, máy tính bảng hoặc PC (bước 1 ở trên), đặt công trình vào một thế giới, rồi tải thế giới đó lên Realm và tham gia Realm từ console. Không có Realm thì công trình chỉ ở trên thiết bị bạn đã nhập.</p></details>
+<details><summary>Có bắt buộc là thế giới Sáng tạo không?</summary><p>Không. Chế độ nào cũng được, kể cả Sinh tồn: lệnh chỉ cần cheat được bật cho thế giới đó, và cheat chỉ làm bạn mất thành tựu ở đó. Sáng tạo chỉ tiện hơn để ngắm công trình: bạn bay được, và không có gì cắn.</p></details>
+<details><summary>Xuất có miễn phí không?</summary><p>Ba lần xuất đầu tiên miễn phí. Sau đó, xuất là một phần của Craft Block Premium. Mọi thứ trên trang này đều do chính game thực hiện và không tốn gì cả.</p></details>
+</div>
+</div></section>
+
+<footer><div class="wrap">Craft Block Tool for Minecraft · <a href="/craft/">Về ứng dụng</a> · <a href="mailto:support@teamof3andd.com">support@teamof3andd.com</a><br><span style="font-size:12px">Không phải sản phẩm Minecraft chính thức. Không được Mojang hay Microsoft phê duyệt và không liên kết với họ.</span></div></footer>
+
+<script>
+function pick(p,scroll){
+  document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
+  document.getElementById('java').classList.toggle('on',p==='java');
+  document.getElementById('pickB').classList.toggle('on',p==='bedrock');
+  document.getElementById('pickJ').classList.toggle('on',p==='java');
+  try{localStorage.setItem('craftExportPath',p)}catch(e){}
+  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+}
+(function(){
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
+  pick(p||'bedrock',false);
+})();
+</script>
+</body>
+</html>
