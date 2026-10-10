@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Đưa công trình Craft Block vào Minecraft — hướng dẫn từng bước</title>
-<meta name="description" content="Cách tải một công trình xuất từ Craft Block vào thế giới Minecraft của bạn: Bedrock (điện thoại, máy tính bảng, console, Windows) và Java (PC, Mac). Mỗi bước một thao tác, không cần mod.">
+<meta name="description" content="Cách đưa công trình từ Craft Block vào Minecraft: một thế giới có sẵn với công trình đã dựng sẵn bên trong (Bedrock), hoặc thế giới của bạn trên Bedrock (điện thoại, máy tính bảng, console, Windows) và Java (PC, Mac). Mỗi bước một thao tác, không cần mod.">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/vi/">
 <link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
 <link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="Đưa công trình Craft Block vào Minecraft"><meta property="og:description" content="Bedrock và Java, không cần mod: xuất từ ứng dụng, một lệnh trong game."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<meta property="og:title" content="Đưa công trình Craft Block vào Minecraft"><meta property="og:description" content="Bedrock và Java, không cần mod: một thế giới có sẵn với công trình đã dựng sẵn bên trong, hoặc thế giới của bạn với một lệnh."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
 :root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,7 +83,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <header class="hero"><div class="wrap">
 <h1>Công trình của bạn, trong thế giới của bạn</h1>
-<p>Sáu bước. Mỗi bước chỉ một việc. Cuối cùng bạn gõ một lệnh và công trình hiện ra trước mặt. Không cần mod.</p>
+<p>Chỉ vài bước, mỗi bước một việc. Với thế giới có sẵn, công trình đã đứng sẵn ở đó khi bạn mở ra. Hoặc một lệnh sẽ đặt công trình vào thế giới bạn đang có. Không cần mod.</p>
 <div class="pick">
 <button id="pickB" onclick="pick('bedrock')">Tôi chơi trên điện thoại, máy tính bảng, console hoặc Windows<small>Đó là Minecraft <b>Bedrock</b>, bản trên cửa hàng ứng dụng.</small></button>
 <button id="pickJ" onclick="pick('java')">Tôi chơi trên PC hoặc Mac qua Launcher<small>Đó là Minecraft <b>Java</b>.</small></button>
@@ -111,7 +111,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>Bạn nhận được gì</h3>
-<p><b>Bedrock:</b> một tệp đuôi <code>.mcpack</code>. Mở nó sẽ đưa vào game một gói mang tên công trình của bạn. <b>Java:</b> một tệp <code>.zip</code> đuôi <code>_datapack.zip</code>, đặt vào thư mục thế giới. Cả hai đều rất nhỏ và chỉ chứa các khối của bạn, không gì khác.</p>
+<p><b>Bedrock:</b> hoặc một thế giới có sẵn, là một tệp đuôi <code>.mcworld</code> mở ra thành một thế giới mới, hoặc một gói, là một tệp đuôi <code>.mcpack</code> đưa vào game một gói mang tên công trình của bạn. <b>Java:</b> một tệp <code>.zip</code> đuôi <code>_datapack.zip</code>, đặt vào thư mục thế giới. Tất cả đều rất nhỏ và chỉ chứa công trình của bạn, không gì khác.</p>
 <p>Ứng dụng hiện kích thước trước khi xuất: bao nhiêu khối, rộng, sâu và cao bao nhiêu. Công trình lớn được chia thành nhiều phần trong cùng một tệp; lệnh vẫn đặt tất cả cùng lúc.</p>
 </div></div>
 </div>
@@ -132,7 +132,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>Tôi có thể xuất bao nhiêu lần?</h3>
-<p>Ba lần miễn phí. Sau đó, xuất là một phần của Craft Block Premium. Tệp thì không bao giờ hết hạn: có nó rồi, bạn có thể đưa công trình vào bao nhiêu thế giới tùy thích.</p>
+<p>Tổng cộng ba công trình được miễn phí. Mỗi công trình đưa vào game dùng một lượt xuất miễn phí, nên một thế giới có sẵn với ba công trình sẽ dùng hết cả ba. Sau đó, xuất là một phần của Craft Block Premium. Tệp thì không bao giờ hết hạn: có nó rồi, bạn có thể đưa công trình vào bao nhiêu thế giới tùy thích.</p>
 </div></div>
 </div>
 
@@ -334,7 +334,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>Không thấy động vật của tôi</summary><p>Động vật trong Craft Block là trang trí, không phải khối. Game không có khối cho chúng nên chúng ở lại trong trình lập kế hoạch. Ứng dụng cho biết có bao nhiêu con trước khi xuất.</p></details>
 <details><summary>Tôi chơi trên Xbox, PlayStation hoặc Switch</summary><p>Console không mở được tệp, nên không nhập gói trực tiếp ở đó được. Nhập trên điện thoại, máy tính bảng hoặc PC (bước 1 ở trên), đặt công trình vào một thế giới, rồi tải thế giới đó lên Realm và tham gia Realm từ console. Không có Realm thì công trình chỉ ở trên thiết bị bạn đã nhập.</p></details>
 <details><summary>Có bắt buộc là thế giới Sáng tạo không?</summary><p>Không. Chế độ nào cũng được, kể cả Sinh tồn: lệnh chỉ cần cheat được bật cho thế giới đó, và cheat chỉ làm bạn mất thành tựu ở đó. Sáng tạo chỉ tiện hơn để ngắm công trình: bạn bay được, và không có gì cắn.</p></details>
-<details><summary>Xuất có miễn phí không?</summary><p>Ba lần xuất đầu tiên miễn phí. Sau đó, xuất là một phần của Craft Block Premium. Mọi thứ trên trang này đều do chính game thực hiện và không tốn gì cả.</p></details>
+<details><summary>Xuất có miễn phí không?</summary><p>Tổng cộng ba công trình được miễn phí; thế giới có sẵn dùng một lượt xuất miễn phí cho mỗi công trình bên trong. Sau đó, xuất là một phần của Craft Block Premium. Mọi thứ trên trang này đều do chính game thực hiện và không tốn gì cả.</p></details>
 </div>
 </div></section>
 

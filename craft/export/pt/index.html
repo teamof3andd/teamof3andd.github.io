@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Coloque sua construção do Craft Block no Minecraft — passo a passo</title>
-<meta name="description" content="Como carregar uma construção exportada do Craft Block no seu próprio mundo do Minecraft: Bedrock (celular, tablet, console, Windows) e Java (PC, Mac). Uma ação por passo, sem mods.">
+<meta name="description" content="Como levar uma construção do Craft Block para o Minecraft: um mundo pronto com as suas construções já dentro (Bedrock) ou o seu próprio mundo no Bedrock (celular, tablet, console, Windows) e no Java (PC, Mac). Uma ação por passo, sem mods.">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/pt/">
 <link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
 <link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="Coloque sua construção do Craft Block no Minecraft"><meta property="og:description" content="Bedrock e Java, sem mods: exporte do app, um comando no jogo."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<meta property="og:title" content="Coloque sua construção do Craft Block no Minecraft"><meta property="og:description" content="Bedrock e Java, sem mods: um mundo pronto com as suas construções já dentro, ou o seu próprio mundo com um comando."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
 :root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,7 +83,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <header class="hero"><div class="wrap">
 <h1>Sua construção, no seu próprio mundo</h1>
-<p>Seis passos. Uma coisa para fazer em cada um. No final você digita um comando e a construção aparece na sua frente. Sem mods.</p>
+<p>Poucos passos, uma coisa para fazer em cada um. Num mundo pronto, as suas construções já estão de pé quando você o abre. Ou um comando coloca uma construção num mundo que você já tem. Sem mods.</p>
 <div class="pick">
 <button id="pickB" onclick="pick('bedrock')">Jogo no celular, tablet, console ou Windows<small>Isso é o Minecraft <b>Bedrock</b>, o da loja de apps.</small></button>
 <button id="pickJ" onclick="pick('java')">Jogo no PC ou Mac pelo Launcher<small>Isso é o Minecraft <b>Java</b>.</small></button>
@@ -111,7 +111,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>O que você recebe</h3>
-<p><b>Bedrock:</b> um arquivo terminado em <code>.mcpack</code>. Ao abri-lo, um pacote com o nome da sua construção entra no jogo. <b>Java:</b> um <code>.zip</code> terminado em <code>_datapack.zip</code>, que vai para a pasta do seu mundo. Os dois são minúsculos e contêm só os seus blocos, nada mais.</p>
+<p><b>Bedrock:</b> ou um mundo pronto, um arquivo terminado em <code>.mcworld</code> que abre como um mundo novo, ou um pacote, um arquivo terminado em <code>.mcpack</code> que adiciona ao jogo um pacote com o nome da sua construção. <b>Java:</b> um <code>.zip</code> terminado em <code>_datapack.zip</code>, que vai para a pasta do seu mundo. Todos são minúsculos e contêm só as suas construções, nada mais.</p>
 <p>O app mostra o tamanho antes de exportar: quantos blocos, e a largura, profundidade e altura. Construções maiores são divididas em várias partes dentro do mesmo arquivo; o comando coloca todas de uma vez.</p>
 </div></div>
 </div>
@@ -132,7 +132,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>Quantas vezes posso exportar?</h3>
-<p>Três vezes de graça. Depois, a exportação faz parte do Craft Block Premium. O arquivo em si nunca expira: uma vez que você o tem, pode colocar a construção em quantos mundos quiser.</p>
+<p>No total, três construções são grátis. Cada construção que vai para o jogo usa uma exportação grátis, então um mundo pronto com três construções usa as três. Depois, a exportação faz parte do Craft Block Premium. O arquivo em si nunca expira: uma vez que você o tem, pode colocar a construção em quantos mundos quiser.</p>
 </div></div>
 </div>
 
@@ -334,7 +334,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>Meus animais não estão lá</summary><p>Os animais no Craft Block são decoração, não blocos. O jogo não tem bloco para eles, então ficam no planejador. O app diz quantos são antes de exportar.</p></details>
 <details><summary>Jogo no Xbox, PlayStation ou Switch</summary><p>Consoles não abrem arquivos, então o pacote não pode ser importado neles diretamente. Importe em um celular, tablet ou PC (passo 1 acima), coloque a construção em um mundo, depois envie esse mundo para um Realm e entre no Realm pelo console. Sem Realm, a construção fica no aparelho onde você importou.</p></details>
 <details><summary>Precisa ser um mundo Criativo?</summary><p>Não. Qualquer modo de jogo serve, Sobrevivência incluída: o comando só precisa de truques ligados naquele mundo, e os truques só custam as conquistas ali. O Criativo é só mais fácil para olhar a construção: dá para voar, e nada morde.</p></details>
-<details><summary>A exportação é grátis?</summary><p>As três primeiras exportações são grátis. Depois, a exportação faz parte do Craft Block Premium. Tudo nesta página é feito pelo próprio jogo e não custa nada.</p></details>
+<details><summary>A exportação é grátis?</summary><p>No total, três construções são grátis; um mundo pronto usa uma exportação grátis para cada construção que leva. Depois, a exportação faz parte do Craft Block Premium. Tudo nesta página é feito pelo próprio jogo e não custa nada.</p></details>
 </div>
 </div></section>
 

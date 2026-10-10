@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Поставь постройку из Craft Block в Minecraft — шаг за шагом</title>
-<meta name="description" content="Как загрузить постройку, экспортированную из Craft Block, в свой мир Minecraft: Bedrock (телефон, планшет, консоль, Windows) и Java (ПК, Mac). Одно действие на шаг, без модов.">
+<meta name="description" content="Как перенести постройку из Craft Block в Minecraft: готовый мир, в котором твои постройки уже стоят (Bedrock), или свой мир в Bedrock (телефон, планшет, консоль, Windows) и Java (ПК, Mac). Одно действие на шаг, без модов.">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/ru/">
 <link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
 <link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="Поставь постройку из Craft Block в Minecraft"><meta property="og:description" content="Bedrock и Java, без модов: экспорт из приложения, одна команда в игре."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<meta property="og:title" content="Поставь постройку из Craft Block в Minecraft"><meta property="og:description" content="Bedrock и Java, без модов: готовый мир, где твои постройки уже стоят, или свой мир и одна команда."><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
 :root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,7 +83,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <header class="hero"><div class="wrap">
 <h1>Твоя постройка в твоём мире</h1>
-<p>Шесть шагов. По одному действию в каждом. В конце ты вводишь одну команду, и постройка появляется перед тобой. Без модов.</p>
+<p>Несколько шагов, в каждом по одному действию. В готовом мире постройки уже стоят, когда ты его открываешь. Или одна команда ставит постройку в мир, который у тебя уже есть. Без модов.</p>
 <div class="pick">
 <button id="pickB" onclick="pick('bedrock')">Я играю на телефоне, планшете, консоли или Windows<small>Это Minecraft <b>Bedrock</b> — тот, что из магазина приложений.</small></button>
 <button id="pickJ" onclick="pick('java')">Я играю на ПК или Mac через Launcher<small>Это Minecraft <b>Java</b>.</small></button>
@@ -111,7 +111,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>Что ты получаешь</h3>
-<p><b>Bedrock:</b> один файл с расширением <code>.mcpack</code>. Если его открыть, в игре появляется пакет с названием твоей постройки. <b>Java:</b> один <code>.zip</code>, заканчивающийся на <code>_datapack.zip</code>, который кладётся в папку мира. Оба крошечные и содержат только твои блоки, больше ничего.</p>
+<p><b>Bedrock:</b> либо готовый мир — один файл с расширением <code>.mcworld</code>, который открывается как новый мир, — либо пакет — один файл с расширением <code>.mcpack</code>, который добавляет в игру пакет с названием твоей постройки. <b>Java:</b> один <code>.zip</code>, заканчивающийся на <code>_datapack.zip</code>, который кладётся в папку мира. Все они крошечные и содержат только твои постройки, больше ничего.</p>
 <p>Перед экспортом приложение показывает размер: сколько блоков, какая ширина, глубина и высота. Большие постройки разбиваются на несколько частей внутри одного файла; команда всё равно ставит их все сразу.</p>
 </div></div>
 </div>
@@ -132,7 +132,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>Сколько раз можно экспортировать?</h3>
-<p>Три раза бесплатно. Дальше экспорт входит в Craft Block Premium. Сам файл никогда не устаревает: если он у тебя есть, можешь ставить постройку в сколько угодно миров.</p>
+<p>Всего бесплатно три постройки. Каждая постройка, которая попадает в игру, тратит один бесплатный экспорт, так что готовый мир с тремя постройками тратит все три. Дальше экспорт входит в Craft Block Premium. Сам файл никогда не устаревает: если он у тебя есть, можешь ставить постройку в сколько угодно миров.</p>
 </div></div>
 </div>
 
@@ -334,7 +334,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>Моих животных нет</summary><p>Животные в Craft Block — это декорации, а не блоки. У игры для них нет блока, поэтому они остаются в планировщике. Приложение говорит, сколько их, перед экспортом.</p></details>
 <details><summary>Я играю на Xbox, PlayStation или Switch</summary><p>Консоли не умеют открывать файлы, поэтому пакет туда напрямую не импортировать. Импортируй его на телефоне, планшете или ПК (шаг 1 выше), поставь постройку в мир, затем загрузи этот мир в Realm и присоединись к Realm с консоли. Без Realm постройка остаётся на том устройстве, где ты её импортировал.</p></details>
 <details><summary>Мир обязательно должен быть в Творческом режиме?</summary><p>Нет. Подходит любой режим, включая Выживание — команде нужны лишь включённые читы в этом мире, а читы стоят только достижений в нём. Творческий просто удобнее, чтобы рассмотреть постройку: можно летать, и никто не кусает.</p></details>
-<details><summary>Экспорт бесплатный?</summary><p>Первые три экспорта бесплатны. Дальше экспорт входит в Craft Block Premium. Всё на этой странице делает сама игра, и это ничего не стоит.</p></details>
+<details><summary>Экспорт бесплатный?</summary><p>Всего бесплатно три постройки; готовый мир тратит по одному бесплатному экспорту на каждую постройку в нём. Дальше экспорт входит в Craft Block Premium. Всё на этой странице делает сама игра, и это ничего не стоит.</p></details>
 </div>
 </div></section>
 

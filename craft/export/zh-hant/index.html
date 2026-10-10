@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>把 Craft Block 的建築放進 Minecraft——逐步指南</title>
-<meta name="description" content="如何把從 Craft Block 匯出的建築放進自己的 Minecraft 世界：Bedrock（手機、平板、主機、Windows）和 Java（PC、Mac）。每步一個動作，不需要模組。">
+<meta name="description" content="如何把 Craft Block 的建築放進 Minecraft：建築已經立在裡面的現成世界（Bedrock），或你自己在 Bedrock（手機、平板、主機、Windows）和 Java（PC、Mac）裡的世界。每步一個動作，不需要模組。">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
 <link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="把 Craft Block 的建築放進 Minecraft"><meta property="og:description" content="Bedrock 和 Java 都可以，不需要模組：從 App 匯出，在遊戲裡輸入一條指令。"><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<meta property="og:title" content="把 Craft Block 的建築放進 Minecraft"><meta property="og:description" content="Bedrock 和 Java 都可以，不需要模組：建築已經立在裡面的現成世界，或用一條指令放進你自己的世界。"><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
 :root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,7 +83,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <header class="hero"><div class="wrap">
 <h1>你的建築，放進你自己的世界</h1>
-<p>六步。每步只做一件事。最後輸入一條指令，建築就出現在你面前。不需要模組。</p>
+<p>只需幾步，每步只做一件事。用現成世界，打開時建築就已經立在那裡；或者輸入一條指令，把建築放進你既有的世界。不需要模組。</p>
 <div class="pick">
 <button id="pickB" onclick="pick('bedrock')">我在手機、平板、主機或 Windows 上玩<small>那是 Minecraft <b>Bedrock</b>，應用程式商店裡的那個。</small></button>
 <button id="pickJ" onclick="pick('java')">我在 PC 或 Mac 上透過啟動器玩<small>那是 Minecraft <b>Java</b>。</small></button>
@@ -111,7 +111,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>你會得到什麼</h3>
-<p><b>Bedrock：</b> 一個以 <code>.mcpack</code> 結尾的檔案。打開它，一個以你建築命名的套件就會進入遊戲。<b>Java：</b> 一個以 <code>_datapack.zip</code> 結尾的 <code>.zip</code>，放進你的世界資料夾。兩者都很小，只包含你的方塊，別無其他。</p>
+<p><b>Bedrock：</b> 現成世界或套件，二選一。現成世界是一個以 <code>.mcworld</code> 結尾的檔案，打開就是一個新世界；套件是一個以 <code>.mcpack</code> 結尾的檔案，打開後一個以你建築命名的套件會進入遊戲。<b>Java：</b> 一個以 <code>_datapack.zip</code> 結尾的 <code>.zip</code>，放進你的世界資料夾。它們都很小，只包含你的建築，別無其他。</p>
 <p>匯出前 App 會顯示尺寸：多少方塊，多寬、多深、多高。大型建築會在同一個檔案裡切成幾個部分；指令仍然一次把它們全部放好。</p>
 </div></div>
 </div>
@@ -132,7 +132,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>可以匯出幾次？</h3>
-<p>免費三次。之後匯出屬於 Craft Block Premium。檔案本身永不過期：一旦有了它，你可以把建築放進任意多個世界。</p>
+<p>總共可以免費匯出三個建築。每個進入遊戲的建築都會用掉一次免費匯出，所以放了三個建築的現成世界會用完全部三次。之後匯出屬於 Craft Block Premium。檔案本身永不過期：一旦有了它，你可以把建築放進任意多個世界。</p>
 </div></div>
 </div>
 
@@ -334,7 +334,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>我的動物不在</summary><p>Craft Block 裡的動物是裝飾，不是方塊。遊戲裡沒有對應的方塊，所以它們留在規劃器裡。匯出前 App 會告訴你有多少隻。</p></details>
 <details><summary>我在 Xbox、PlayStation 或 Switch 上玩</summary><p>主機無法打開檔案，所以套件不能直接匯入到主機上。在手機、平板或 PC 上匯入（上面的第 1 步），把建築放進一個世界，然後把那個世界上傳到 Realm，再從主機加入該 Realm。沒有 Realm 的話，建築只留在你匯入它的那台裝置上。</p></details>
 <details><summary>一定要是創造模式世界嗎？</summary><p>不用。任何遊戲模式都可以，包括生存——指令唯一需要的是這個世界開啟了作弊，而作弊只會讓你失去這個世界裡的成就。創造模式只是看建築更方便：可以飛，也沒有東西咬你。</p></details>
-<details><summary>匯出免費嗎？</summary><p>前三次匯出免費。之後匯出屬於 Craft Block Premium。這個頁面上的所有操作都由遊戲本身完成，不收任何費用。</p></details>
+<details><summary>匯出免費嗎？</summary><p>總共可以免費匯出三個建築；現成世界裡的每個建築都會用掉一次免費匯出。之後匯出屬於 Craft Block Premium。這個頁面上的所有操作都由遊戲本身完成，不收任何費用。</p></details>
 </div>
 </div></section>
 

@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>把 Craft Block 的建筑放进 Minecraft——分步指南</title>
-<meta name="description" content="如何把从 Craft Block 导出的建筑放进自己的 Minecraft 世界：Bedrock（手机、平板、主机、Windows）和 Java（PC、Mac）。每步一个操作，无需模组。">
+<meta name="description" content="如何把 Craft Block 的建筑放进 Minecraft：建筑已经立在里面的现成世界（Bedrock），或你自己在 Bedrock（手机、平板、主机、Windows）和 Java（PC、Mac）里的世界。每步一个操作，无需模组。">
 <link rel="canonical" href="https://teamof3andd.com/craft/export/zh/">
 <link rel="alternate" hreflang="en" href="https://teamof3andd.com/craft/export/">
 <link rel="alternate" hreflang="uk" href="https://teamof3andd.com/craft/export/uk/">
@@ -23,7 +23,7 @@
 <link rel="alternate" hreflang="zh-Hant" href="https://teamof3andd.com/craft/export/zh-hant/">
 <link rel="alternate" hreflang="x-default" href="https://teamof3andd.com/craft/export/">
 <link rel="icon" href="/assets/craft_icon.png">
-<meta property="og:title" content="把 Craft Block 的建筑放进 Minecraft"><meta property="og:description" content="Bedrock 和 Java 都可以，无需模组：从应用导出，在游戏里输入一条命令。"><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
+<meta property="og:title" content="把 Craft Block 的建筑放进 Minecraft"><meta property="og:description" content="Bedrock 和 Java 都可以，无需模组：建筑已经立在里面的现成世界，或用一条命令放进你自己的世界。"><meta property="og:image" content="https://teamof3andd.com/assets/craft_shot1.jpg">
 <style>
 :root{--ink:#0f2430;--grey:#5b6b76;--bg:#f6f8fa;--card:#fff;--line:#e6ebef;--accent:#2e7d32;--accent2:#43A047;--dark:#10321a;--code:#eef3f0;--warn:#fff7e6;--warnline:#f0c36d}
 *{margin:0;padding:0;box-sizing:border-box}
@@ -83,7 +83,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <header class="hero"><div class="wrap">
 <h1>你的建筑，放进你自己的世界</h1>
-<p>六步。每步只做一件事。最后输入一条命令，建筑就出现在你面前。无需模组。</p>
+<p>只需几步，每步只做一件事。用现成世界，打开时建筑就已经立在那里；或者输入一条命令，把建筑放进你已有的世界。无需模组。</p>
 <div class="pick">
 <button id="pickB" onclick="pick('bedrock')">我在手机、平板、主机或 Windows 上玩<small>那是 Minecraft <b>Bedrock</b>，应用商店里的那个。</small></button>
 <button id="pickJ" onclick="pick('java')">我在 PC 或 Mac 上通过启动器玩<small>那是 Minecraft <b>Java</b>。</small></button>
@@ -111,7 +111,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>你会得到什么</h3>
-<p><b>Bedrock：</b> 一个以 <code>.mcpack</code> 结尾的文件。打开它，一个以你建筑命名的包就会进入游戏。<b>Java：</b> 一个以 <code>_datapack.zip</code> 结尾的 <code>.zip</code>，放进你的世界文件夹。两者都很小，只包含你的方块，别无其他。</p>
+<p><b>Bedrock：</b> 现成世界或包，二选一。现成世界是一个以 <code>.mcworld</code> 结尾的文件，打开就是一个新世界；包是一个以 <code>.mcpack</code> 结尾的文件，打开后一个以你建筑命名的包会进入游戏。<b>Java：</b> 一个以 <code>_datapack.zip</code> 结尾的 <code>.zip</code>，放进你的世界文件夹。它们都很小，只包含你的建筑，别无其他。</p>
 <p>导出前应用会显示尺寸：多少方块，多宽、多深、多高。大型建筑会在同一个文件里切成几部分；命令仍然一次把它们全部放好。</p>
 </div></div>
 </div>
@@ -132,7 +132,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <div class="step"><div class="top"><div class="n">?</div><div>
 <h3>可以导出几次？</h3>
-<p>免费三次。之后导出属于 Craft Block Premium。文件本身永不过期：一旦有了它，你可以把建筑放进任意多个世界。</p>
+<p>总共可以免费导出三个建筑。每个进入游戏的建筑都会用掉一次免费导出，所以放了三个建筑的现成世界会用完全部三次。之后导出属于 Craft Block Premium。文件本身永不过期：一旦有了它，你可以把建筑放进任意多个世界。</p>
 </div></div>
 </div>
 
@@ -334,7 +334,7 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 <details><summary>我的动物不在</summary><p>Craft Block 里的动物是装饰，不是方块。游戏里没有对应的方块，所以它们留在规划器里。导出前应用会告诉你有多少只。</p></details>
 <details><summary>我在 Xbox、PlayStation 或 Switch 上玩</summary><p>主机无法打开文件，所以包不能直接导入到主机上。在手机、平板或 PC 上导入（上面的第 1 步），把建筑放进一个世界，然后把那个世界上传到 Realm，再从主机加入该 Realm。没有 Realm 的话，建筑只留在你导入它的那台设备上。</p></details>
 <details><summary>必须是创造模式世界吗？</summary><p>不用。任何游戏模式都可以，包括生存——命令唯一需要的是这个世界开启了作弊，而作弊只会让你失去这个世界里的成就。创造模式只是看建筑更方便：可以飞，也没有东西咬你。</p></details>
-<details><summary>导出免费吗？</summary><p>前三次导出免费。之后导出属于 Craft Block Premium。这个页面上的所有操作都由游戏本身完成，不收任何费用。</p></details>
+<details><summary>导出免费吗？</summary><p>总共可以免费导出三个建筑；现成世界里的每个建筑都会用掉一次免费导出。之后导出属于 Craft Block Premium。这个页面上的所有操作都由游戏本身完成，不收任何费用。</p></details>
 </div>
 </div></section>
 
