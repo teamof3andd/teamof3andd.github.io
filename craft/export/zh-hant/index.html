@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock 最簡單的方法：現成世界</h2>
+<p class="lead">Craft Block 會建立一個全新的平坦創造模式世界，你的建築已經立在裡面。不用輸入指令，也不用開啟任何設定，你自己的世界完全不受影響。想把建築放進既有的世界？請看下面的<a href="#bedrock">放進自己的世界</a>。</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>選擇「現成世界」</h3>
+<p>在主畫面長按你的建築 → <b>匯出到 Minecraft</b> → Bedrock 下的第一個選項 <b>現成世界</b>。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>選擇建築</h3>
+<p>App 會問 <b>把哪些建築放進世界？</b> 正在匯出的建築已經勾選。再從 <b>你的建築</b> 和 <b>內建範例</b> 裡加入，總共最多 10 個，然後點 <b>建立世界</b>。</p>
+<p>它們會在平坦的平原上一排排並肩而立。開通 Craft Block Premium 後，進階範例才會出現在列表中。 沒有 Premium 時，每個建築會用掉一次免費匯出，所以清單裡能加入的數量就是你剩下的次數。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>把世界匯入遊戲</h3>
+<p>點 <b>儲存 .mcworld</b>。接下來依裝置而定：</p>
+<p><b>Android 手機或平板：</b> Minecraft 會自動打開並匯入世界。為此遊戲會重新啟動一次——這是正常的。</p>
+<p><b>iPhone 或 iPad：</b> 會跳出分享面板。選擇 <b>Minecraft</b>。如果列表裡沒有，選擇 <b>儲存到「檔案」</b>，然後打開「檔案」App 並點該檔案。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>開啟世界</h3>
+<p>在 Minecraft 裡點 <b>遊玩</b>。你現在在 <b>世界</b> 分頁。</p>
+<p>點新世界。它和你的建築同名，如果另外加了兩個，名稱結尾會帶 <i>+2</i>。在區域載入的幾秒鐘裡，快捷欄上方會顯示 <b>正在建造你的世界…</b>。</p>
+<p class="see">你應該看到：你的建築就在眼前（建築很多時，你會站在一個小小的高台上）。這是創造模式：可以繞著飛，也可以走進去。</p>
+<div class="oops"><b>這個世界的成就是關閉的。</b> 那裡開啟了作弊，而 Minecraft 在開了作弊的世界裡不給成就。這就是代價，也正因如此，你自己的生存世界從來不會被動到。下面的 <b>放進自己的世界</b> 則需要在你自己的世界裡開啟作弊，那裡的成就會永久關閉。</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock：手機、平板、主機、Windows</h2>
+<p class="lead"><b>放進自己的世界：</b> 把建築放進你既有的世界。步驟多一些：在那個世界開啟作弊，然後輸入一條指令。</p>
 <p class="lead">每一步就是一個畫面。每步下面那行字說明成功後你應該看到什麼。圖片來自 Android 平板和 iPhone；Windows 上看起來一樣。</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>從 Craft Block 匯出</h3>
-<p>在主畫面長按你的建築 → <b>匯出到 Minecraft</b> → <b>Bedrock</b> → <b>儲存 .mcpack</b>。</p>
+<p>在主畫面長按你的建築 → <b>匯出到 Minecraft</b> → <b>放進自己的世界</b>（在 Bedrock 下） → <b>儲存 .mcpack</b>。</p>
 <p>然後把檔案送進遊戲——這是唯一一個因裝置而異的步驟：</p>
 <p><b>Android 手機或平板：</b> Minecraft 會自動打開並匯入套件。</p>
 <p><b>iPhone 或 iPad：</b> 會跳出分享面板。選擇 <b>Minecraft</b>。如果列表裡沒有，選擇 <b>儲存到「檔案」</b>，然後打開「檔案」App 並點該檔案。</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

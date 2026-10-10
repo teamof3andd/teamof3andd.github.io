@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock, the easiest way: Ready world</h2>
+<p class="lead">Craft Block makes a brand-new flat Creative world with your build already standing in it. No commands to type, nothing to switch on, and your own worlds stay untouched. Want the build inside a world you already have? Use <a href="#bedrock">Into your own world</a> below.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Choose Ready world</h3>
+<p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Ready world</b>, the first choice under Bedrock.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Pick the builds</h3>
+<p>The app asks <b>Which builds go into the world?</b> The one you are exporting is already ticked. Add more from <b>Your builds</b> and <b>Built-in examples</b>, up to 10 in all, then press <b>Create world</b>.</p>
+<p>They will stand side by side on a flat plain, in rows. Premium examples appear in the list with Craft Block Premium. Without Premium, each build uses one of your free exports, so the list lets you add as many as you have left.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Get the world into the game</h3>
+<p>Press <b>Save .mcworld</b>. What happens next depends on the device:</p>
+<p><b>Android phone or tablet:</b> Minecraft opens by itself and imports the world. The game restarts to do it — that is normal.</p>
+<p><b>iPhone or iPad:</b> a share sheet opens. Pick <b>Minecraft</b>. If it is not in the list, choose <b>Save to Files</b>, then open the Files app and tap the file.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Open the world</h3>
+<p>In Minecraft press <b>Play</b>. You are on the <b>Worlds</b> tab.</p>
+<p>Tap the new world. It has your build's name, with <i>+2</i> on the end if you added two more. For a few seconds the line above the hotbar says <b>Building your world…</b> while the area loads.</p>
+<p class="see">You should see: your builds right in front of you (with many of them, you start on a small raised deck). It is Creative: fly around and walk inside.</p>
+<div class="oops"><b>Achievements are off in this world.</b> Cheats are on there, and Minecraft gives no achievements in a world with cheats. That is the trade, and it is why your own survival worlds are never touched. <b>Into your own world</b> below needs cheats in your own world instead, which turns its achievements off for good.</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock: phone, tablet, console, Windows</h2>
+<p class="lead"><b>Into your own world:</b> the build goes into a world you already have. A few more steps: cheats on in that world, then one command.</p>
 <p class="lead">Every step is one screen. The line under each says what you should see when it worked. The pictures are from an Android tablet and an iPhone; Windows looks the same.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Export from Craft Block</h3>
-<p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Bedrock</b> → <b>Save .mcpack</b>.</p>
+<p>On the home screen press and hold your build → <b>Export to Minecraft</b> → <b>Into your own world</b> (under Bedrock) → <b>Save .mcpack</b>.</p>
 <p>Then get the file into the game — this is the one step that differs by device:</p>
 <p><b>Android phone or tablet:</b> Minecraft opens by itself and imports the pack.</p>
 <p><b>iPhone or iPad:</b> a share sheet opens. Pick <b>Minecraft</b>. If it is not in the list, choose <b>Save to Files</b>, then open the Files app and tap the file.</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock, am einfachsten: Fertige Welt</h2>
+<p class="lead">Craft Block erstellt eine brandneue flache Kreativwelt, in der dein Bauwerk schon steht. Kein Befehl, nichts einzuschalten, und deine eigenen Welten bleiben unberührt. Du willst das Bauwerk in einer Welt, die du schon hast? Dann weiter unten bei <a href="#bedrock">In deine eigene Welt</a>.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>„Fertige Welt“ wählen</h3>
+<p>Halte auf dem Startbildschirm dein Bauwerk gedrückt → <b>Nach Minecraft exportieren</b> → <b>Fertige Welt</b>, die erste Option unter Bedrock.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Bauwerke auswählen</h3>
+<p>Die App fragt <b>Welche Bauwerke kommen in die Welt?</b> Das Bauwerk, das du exportierst, ist schon angehakt. Nimm weitere aus <b>Deine Bauwerke</b> und <b>Integrierte Beispiele</b> dazu, insgesamt bis zu 10, und tippe auf <b>Welt erstellen</b>.</p>
+<p>Sie stehen nebeneinander in Reihen auf einer flachen Ebene. Premium-Beispiele erscheinen in der Liste mit Craft Block Premium. Ohne Premium braucht jedes Bauwerk einen deiner Gratis-Exporte, deshalb kannst du so viele hinzufügen, wie dir noch bleiben.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Die Welt ins Spiel bringen</h3>
+<p>Tippe auf <b>.mcworld speichern</b>. Was dann passiert, hängt vom Gerät ab:</p>
+<p><b>Android-Handy oder -Tablet:</b> Minecraft öffnet sich von selbst und importiert die Welt. Dafür startet das Spiel neu — das ist normal.</p>
+<p><b>iPhone oder iPad:</b> ein Teilen-Menü öffnet sich. Wähle <b>Minecraft</b>. Fehlt es in der Liste, wähle <b>In Dateien sichern</b>, öffne dann die Dateien-App und tippe auf die Datei.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Die Welt öffnen</h3>
+<p>Drücke in Minecraft auf <b>Spielen</b>. Du bist auf dem Tab <b>Welten</b>.</p>
+<p>Tippe auf die neue Welt. Sie trägt den Namen deines Bauwerks, mit <i>+2</i> am Ende, wenn du zwei weitere dazugenommen hast. Ein paar Sekunden lang steht über der Schnellzugriffsleiste <b>Deine Welt wird gebaut…</b>, während die Gegend lädt.</p>
+<p class="see">Du solltest sehen: deine Bauwerke direkt vor dir (bei vielen startest du auf einer kleinen erhöhten Plattform). Es ist Kreativ: flieg herum und geh hinein.</p>
+<div class="oops"><b>Erfolge sind in dieser Welt aus.</b> Dort sind Cheats an, und in einer Welt mit Cheats vergibt Minecraft keine Erfolge. Das ist der Preis — und genau deshalb bleiben deine eigenen Überlebenswelten unberührt. <b>In deine eigene Welt</b> weiter unten braucht dagegen Cheats in deiner eigenen Welt, und dort sind die Erfolge dann für immer aus.</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock: Handy, Tablet, Konsole, Windows</h2>
+<p class="lead"><b>In deine eigene Welt:</b> das Bauwerk kommt in eine Welt, die du schon hast. Ein paar Schritte mehr: Cheats in dieser Welt an, dann ein Befehl.</p>
 <p class="lead">Jeder Schritt ist ein Bildschirm. Die Zeile darunter sagt, was du sehen solltest, wenn es geklappt hat. Die Bilder stammen von einem Android-Tablet und einem iPhone; unter Windows sieht es genauso aus.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Aus Craft Block exportieren</h3>
-<p>Halte auf dem Startbildschirm dein Bauwerk gedrückt → <b>Nach Minecraft exportieren</b> → <b>Bedrock</b> → <b>.mcpack speichern</b>.</p>
+<p>Halte auf dem Startbildschirm dein Bauwerk gedrückt → <b>Nach Minecraft exportieren</b> → <b>In deine eigene Welt</b> (unter Bedrock) → <b>.mcpack speichern</b>.</p>
 <p>Dann bring die Datei ins Spiel — das ist der eine Schritt, der sich je nach Gerät unterscheidet:</p>
 <p><b>Android-Handy oder -Tablet:</b> Minecraft öffnet sich von selbst und importiert das Paket.</p>
 <p><b>iPhone oder iPad:</b> ein Teilen-Menü öffnet sich. Wähle <b>Minecraft</b>. Fehlt es in der Liste, wähle <b>In Dateien sichern</b>, öffne dann die Dateien-App und tippe auf die Datei.</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

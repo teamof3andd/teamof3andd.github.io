@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock, la forma más fácil: Mundo listo</h2>
+<p class="lead">Craft Block crea un mundo Creativo plano y nuevo con tu construcción ya dentro, en pie. Sin comandos que escribir, sin nada que activar, y tus propios mundos quedan intactos. ¿Quieres la construcción en un mundo que ya tienes? Usa <a href="#bedrock">En tu propio mundo</a>, más abajo.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Elige Mundo listo</h3>
+<p>En la pantalla de inicio mantén presionada tu construcción → <b>Exportar a Minecraft</b> → <b>Mundo listo</b>, la primera opción bajo Bedrock.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Elige las construcciones</h3>
+<p>La app pregunta <b>¿Qué construcciones van al mundo?</b> La que estás exportando ya está marcada. Añade más desde <b>Tus construcciones</b> y <b>Ejemplos integrados</b>, hasta 10 en total, y pulsa <b>Crear mundo</b>.</p>
+<p>Quedarán una junto a otra, en filas, sobre una llanura plana. Los ejemplos premium aparecen en la lista con Craft Block Premium. Sin Premium, cada construcción usa una de tus exportaciones gratis, así que la lista te deja añadir tantas como te queden.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Lleva el mundo al juego</h3>
+<p>Pulsa <b>Guardar .mcworld</b>. Lo que pasa después depende del dispositivo:</p>
+<p><b>Teléfono o tablet Android:</b> Minecraft se abre solo e importa el mundo. Para hacerlo, el juego se reinicia; es normal.</p>
+<p><b>iPhone o iPad:</b> se abre una hoja para compartir. Elige <b>Minecraft</b>. Si no está en la lista, elige <b>Guardar en Archivos</b>, luego abre la app Archivos y toca el archivo.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Abre el mundo</h3>
+<p>En Minecraft pulsa <b>Jugar</b>. Estás en la pestaña <b>Mundos</b>.</p>
+<p>Toca el mundo nuevo. Lleva el nombre de tu construcción, con <i>+2</i> al final si añadiste dos más. Durante unos segundos, encima de la barra de acceso rápido aparece <b>Construyendo tu mundo…</b> mientras se carga la zona.</p>
+<p class="see">Deberías ver: tus construcciones justo delante de ti (si son muchas, empiezas en una pequeña plataforma elevada). Es Creativo: vuela alrededor y entra en ellas.</p>
+<div class="oops"><b>Los logros están desactivados en este mundo.</b> Allí los trucos están activos, y Minecraft no da logros en un mundo con trucos. Es el precio, y por eso tus propios mundos de supervivencia nunca se tocan. <b>En tu propio mundo</b>, más abajo, en cambio necesita trucos en tu propio mundo, y eso desactiva sus logros para siempre.</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock: teléfono, tablet, consola, Windows</h2>
+<p class="lead"><b>En tu propio mundo:</b> la construcción va a un mundo que ya tienes. Son unos pasos más: trucos activados en ese mundo y luego un comando.</p>
 <p class="lead">Cada paso es una pantalla. La línea debajo de cada uno dice lo que deberías ver cuando funcionó. Las imágenes son de una tablet Android y un iPhone; en Windows se ve igual.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Exporta desde Craft Block</h3>
-<p>En la pantalla de inicio mantén presionada tu construcción → <b>Exportar a Minecraft</b> → <b>Bedrock</b> → <b>Guardar .mcpack</b>.</p>
+<p>En la pantalla de inicio mantén presionada tu construcción → <b>Exportar a Minecraft</b> → <b>En tu propio mundo</b> (bajo Bedrock) → <b>Guardar .mcpack</b>.</p>
 <p>Luego lleva el archivo al juego; este es el único paso que cambia según el dispositivo:</p>
 <p><b>Teléfono o tablet Android:</b> Minecraft se abre solo e importa el paquete.</p>
 <p><b>iPhone o iPad:</b> se abre una hoja para compartir. Elige <b>Minecraft</b>. Si no está en la lista, elige <b>Guardar en Archivos</b>, luego abre la app Archivos y toca el archivo.</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

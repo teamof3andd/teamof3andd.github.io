@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock, le plus simple : Monde prêt</h2>
+<p class="lead">Craft Block crée un tout nouveau monde Créatif plat, avec votre construction déjà debout dedans. Aucune commande à taper, rien à activer, et vos propres mondes restent intacts. Vous voulez la construction dans un monde que vous avez déjà ? Passez à <a href="#bedrock">Dans ton propre monde</a>, plus bas.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Choisissez Monde prêt</h3>
+<p>Sur l'écran d'accueil, appui long sur votre construction → <b>Exporter vers Minecraft</b> → <b>Monde prêt</b>, le premier choix sous Bedrock.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Choisissez les constructions</h3>
+<p>L'app demande <b>Quelles constructions vont dans le monde ?</b> Celle que vous exportez est déjà cochée. Ajoutez-en d'autres depuis <b>Tes constructions</b> et <b>Exemples intégrés</b>, jusqu'à 10 en tout, puis touchez <b>Créer le monde</b>.</p>
+<p>Elles se tiendront côte à côte, en rangées, sur une plaine plate. Les exemples premium apparaissent dans la liste avec Craft Block Premium. Sans Premium, chaque construction utilise un de tes exports gratuits : la liste te laisse en ajouter autant qu'il t'en reste.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Mettez le monde dans le jeu</h3>
+<p>Touchez <b>Enregistrer .mcworld</b>. La suite dépend de l'appareil :</p>
+<p><b>Téléphone ou tablette Android :</b> Minecraft s'ouvre tout seul et importe le monde. Pour cela, le jeu redémarre : c'est normal.</p>
+<p><b>iPhone ou iPad :</b> une feuille de partage s'ouvre. Choisissez <b>Minecraft</b>. S'il n'est pas dans la liste, choisissez <b>Enregistrer dans Fichiers</b>, puis ouvrez l'app Fichiers et touchez le fichier.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Ouvrez le monde</h3>
+<p>Dans Minecraft, appuyez sur <b>Jouer</b>. Vous êtes dans l'onglet <b>Mondes</b>.</p>
+<p>Touchez le nouveau monde. Il porte le nom de votre construction, avec <i>+2</i> à la fin si vous en avez ajouté deux. Pendant quelques secondes, au-dessus de la barre d'objets, s'affiche <b>Construction de ton monde…</b>, le temps que la zone se charge.</p>
+<p class="see">Vous devez voir : vos constructions juste devant vous (s'il y en a beaucoup, vous démarrez sur une petite plateforme surélevée). C'est le mode Créatif : volez autour et entrez dedans.</p>
+<div class="oops"><b>Les succès sont désactivés dans ce monde.</b> Les triches y sont activées, et Minecraft n'accorde aucun succès dans un monde avec triches. C'est le prix à payer, et c'est pour ça que vos propres mondes de survie ne sont jamais touchés. La méthode <b>Dans ton propre monde</b>, plus bas, demande au contraire d'activer les triches dans un de vos mondes, ce qui y désactive les succès pour de bon.</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock : téléphone, tablette, console, Windows</h2>
+<p class="lead"><b>Dans ton propre monde :</b> la construction va dans un monde que vous avez déjà. Quelques étapes de plus : triches activées dans ce monde, puis une commande.</p>
 <p class="lead">Chaque étape tient sur un écran. La ligne en dessous dit ce que vous devez voir quand ça a marché. Les images viennent d'une tablette Android et d'un iPhone ; sous Windows c'est pareil.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Exportez depuis Craft Block</h3>
-<p>Sur l'écran d'accueil, appui long sur votre construction → <b>Exporter vers Minecraft</b> → <b>Bedrock</b> → <b>Enregistrer .mcpack</b>.</p>
+<p>Sur l'écran d'accueil, appui long sur votre construction → <b>Exporter vers Minecraft</b> → <b>Dans ton propre monde</b> (sous Bedrock) → <b>Enregistrer .mcpack</b>.</p>
 <p>Puis faites entrer le fichier dans le jeu ; c'est la seule étape qui dépend de l'appareil :</p>
 <p><b>Téléphone ou tablette Android :</b> Minecraft s'ouvre tout seul et importe le pack.</p>
 <p><b>iPhone ou iPad :</b> une feuille de partage s'ouvre. Choisissez <b>Minecraft</b>. S'il n'est pas dans la liste, choisissez <b>Enregistrer dans Fichiers</b>, puis ouvrez l'app Fichiers et touchez le fichier.</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

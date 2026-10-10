@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock, проще всего: Готовый мир</h2>
+<p class="lead">Craft Block создаёт новый плоский творческий мир, в котором твоя постройка уже стоит. Никаких команд, ничего не нужно включать, а твои собственные миры остаются нетронутыми. Хочешь постройку в мире, который у тебя уже есть? Смотри раздел <a href="#bedrock">В свой мир</a> ниже.</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>Выбери «Готовый мир»</h3>
+<p>На главном экране зажми свою постройку → <b>Экспорт в Minecraft</b> → <b>Готовый мир</b>, первый вариант под Bedrock.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>Выбери постройки</h3>
+<p>Приложение спросит <b>Какие постройки добавить в мир?</b> Та, которую ты экспортируешь, уже отмечена. Добавь другие из <b>Твои постройки</b> и <b>Встроенные примеры</b>, всего до 10, и нажми <b>Создать мир</b>.</p>
+<p>Они встанут рядом, рядами, на плоской равнине. Премиум-примеры появляются в списке с Craft Block Premium. Без Premium каждая постройка тратит один бесплатный экспорт, поэтому в списке можно выбрать столько, сколько у тебя осталось.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>Перенеси мир в игру</h3>
+<p>Нажми <b>Сохранить .mcworld</b>. Дальше всё зависит от устройства:</p>
+<p><b>Телефон или планшет на Android:</b> Minecraft открывается сам и импортирует мир. Для этого игра перезапускается — это нормально.</p>
+<p><b>iPhone или iPad:</b> открывается лист «Поделиться». Выбери <b>Minecraft</b>. Если его нет в списке, выбери <b>Сохранить в Файлы</b>, затем открой приложение Файлы и коснись файла.</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>Открой мир</h3>
+<p>В Minecraft нажми <b>Играть</b>. Ты на вкладке <b>Миры</b>.</p>
+<p>Коснись нового мира. Он называется так же, как твоя постройка (с <i>+2</i> в конце, если добавлено ещё две). Несколько секунд над панелью быстрого доступа видна надпись <b>Строим мир…</b>, пока загружается местность.</p>
+<p class="see">Ты должен увидеть: свои постройки прямо перед собой (если их много, ты стоишь на небольшом помосте). Это творческий режим: летай вокруг и заходи внутрь.</p>
+<div class="oops"><b>Достижения в этом мире отключены.</b> Там включены читы, а в мире с читами Minecraft достижений не даёт. Такова цена — и именно поэтому твои собственные миры на выживание не затрагиваются. Способ <b>В свой мир</b> ниже, наоборот, требует читов в твоём мире, и там достижения отключаются навсегда.</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock: телефон, планшет, консоль, Windows</h2>
+<p class="lead"><b>В свой мир:</b> постройка попадает в мир, который у тебя уже есть. Шагов чуть больше: читы в этом мире, затем одна команда.</p>
 <p class="lead">Каждый шаг — один экран. Строка под каждым говорит, что ты должен увидеть, когда всё сработало. Картинки с Android-планшета и iPhone; на Windows всё выглядит так же.</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Экспортируй из Craft Block</h3>
-<p>На главном экране зажми свою постройку → <b>Экспорт в Minecraft</b> → <b>Bedrock</b> → <b>Сохранить .mcpack</b>.</p>
+<p>На главном экране зажми свою постройку → <b>Экспорт в Minecraft</b> → <b>В свой мир</b> (под Bedrock) → <b>Сохранить .mcpack</b>.</p>
 <p>Затем передай файл в игру — это единственный шаг, который зависит от устройства:</p>
 <p><b>Телефон или планшет на Android:</b> Minecraft открывается сам и импортирует пакет.</p>
 <p><b>iPhone или iPad:</b> открывается лист «Поделиться». Выбери <b>Minecraft</b>. Если его нет в списке, выбери <b>Сохранить в Файлы</b>, затем открой приложение Файлы и коснись файла.</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();

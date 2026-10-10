@@ -139,15 +139,55 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 </div>
 </div></section>
 
+<!-- ========================= READY WORLD ========================= -->
+<section id="world" class="path"><div class="wrap">
+<h2>Bedrock でいちばん簡単な方法：完成ワールド</h2>
+<p class="lead">Craft Block が、建築がすでに建っている新しい平らなクリエイティブワールドを作ります。コマンド入力も設定の切り替えも不要で、自分のワールドはそのままです。今あるワールドに建築を入れたい場合は、下の <a href="#bedrock">自分のワールドへ</a> を使ってください。</p>
+<div class="steps">
+
+<div class="step"><div class="top"><div class="n">1</div><div>
+<h3>「完成ワールド」を選ぶ</h3>
+<p>ホーム画面で建築を長押し → <b>Minecraft に書き出す</b> → Bedrock の最初の選択肢 <b>完成ワールド</b>。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">2</div><div>
+<h3>建築を選ぶ</h3>
+<p>アプリが <b>どの建築をワールドに入れますか？</b> と聞いてきます。書き出し中の建築にはすでにチェックが入っています。<b>自分の建築</b> と <b>内蔵サンプル</b> から合計 10 件まで追加し、<b>ワールドを作成</b> を押します。</p>
+<p>建築は平らな平原に、列になって並びます。プレミアムのサンプルは Craft Block Premium で一覧に表示されます。 Premiumなしでは建物1つにつき無料の書き出しを1回使うため、残っている回数分だけ追加できます。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">3</div><div>
+<h3>ワールドをゲームに入れる</h3>
+<p><b>.mcworld を保存</b> を押します。この先は端末によって違います：</p>
+<p><b>Android のスマホ・タブレット：</b> Minecraft が自動で開き、ワールドを取り込みます。そのためにゲームが再起動しますが、正常です。</p>
+<p><b>iPhone・iPad：</b> 共有シートが開きます。<b>Minecraft</b> を選びます。一覧にない場合は <b>"ファイル"に保存</b> を選び、ファイルアプリを開いてそのファイルをタップします。</p>
+</div></div>
+</div>
+
+<div class="step"><div class="top"><div class="n">4</div><div>
+<h3>ワールドを開く</h3>
+<p>Minecraft で <b>遊ぶ</b> を押します。<b>ワールド</b> タブにいます。</p>
+<p>新しいワールドをタップします。名前は建築と同じで、2 つ追加した場合は末尾に <i>+2</i> が付きます。エリアを読み込む数秒間、ホットバーの上に <b>ワールドを建築中…</b> と表示されます。</p>
+<p class="see">見えるはずのもの：目の前に並んだ建築（数が多いときは小さな高台からスタートします）。クリエイティブなので、飛び回ったり中に入ったりできます。</p>
+<div class="oops"><b>このワールドでは実績が無効です。</b> チートがオンになっていて、チートありのワールドでは Minecraft は実績をくれません。それが引き換えで、だからこそ自分のサバイバルワールドには一切手を触れません。下の <b>自分のワールドへ</b> は逆に自分のワールドでチートをオンにする必要があり、そのワールドの実績は二度と戻りません。</div>
+</div></div>
+</div>
+
+</div>
+</div></section>
+
 <!-- ============================ BEDROCK ============================ -->
 <section id="bedrock" class="path"><div class="wrap">
 <h2>Bedrock：スマホ、タブレット、コンソール、Windows</h2>
+<p class="lead"><b>自分のワールドへ：</b> 今あるワールドに建築を入れます。手順は少し多めです：そのワールドでチートをオンにして、コマンドを 1 つ入力します。</p>
 <p class="lead">各ステップは1画面ずつ。その下の行に、うまくいったときに見えるはずのものを書いています。画像は Android タブレットと iPhone のもので、Windows でも同じ見た目です。</p>
 <div class="steps">
 
 <div class="step"><div class="top"><div class="n">1</div><div>
 <h3>Craft Block から書き出す</h3>
-<p>ホーム画面で建築を長押し → <b>Minecraft に書き出す</b> → <b>Bedrock</b> → <b>.mcpack を保存</b>。</p>
+<p>ホーム画面で建築を長押し → <b>Minecraft に書き出す</b> → <b>自分のワールドへ</b>（Bedrock の下） → <b>.mcpack を保存</b>。</p>
 <p>次にファイルをゲームに渡します。ここだけ端末によって手順が違います：</p>
 <p><b>Android のスマホ・タブレット：</b> Minecraft が自動で開き、パックを読み込みます。</p>
 <p><b>iPhone・iPad：</b> 共有シートが開きます。<b>Minecraft</b> を選びます。一覧にない場合は <b>"ファイル"に保存</b> を選び、ファイルアプリを開いてそのファイルをタップします。</p>
@@ -302,15 +342,16 @@ footer{padding:30px 0 50px;text-align:center;color:var(--grey);font-size:14px}
 
 <script>
 function pick(p,scroll){
+  document.getElementById('world').classList.toggle('on',p==='bedrock');
   document.getElementById('bedrock').classList.toggle('on',p==='bedrock');
   document.getElementById('java').classList.toggle('on',p==='java');
   document.getElementById('pickB').classList.toggle('on',p==='bedrock');
   document.getElementById('pickJ').classList.toggle('on',p==='java');
   try{localStorage.setItem('craftExportPath',p)}catch(e){}
-  if(scroll!==false){document.getElementById(p).scrollIntoView({behavior:'smooth'})}
+  if(scroll!==false){document.getElementById(p==='bedrock'?'world':p).scrollIntoView({behavior:'smooth'})}
 }
 (function(){
-  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock')?'bedrock':null;
+  var p=(location.hash==='#java')?'java':(location.hash==='#bedrock'||location.hash==='#world')?'bedrock':null;
   if(!p){try{p=localStorage.getItem('craftExportPath')}catch(e){}}
   pick(p||'bedrock',false);
 })();
